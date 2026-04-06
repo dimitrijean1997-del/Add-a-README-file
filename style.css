@@ -1,0 +1,510 @@
+/* ========== VARIABLES & RESET ========== */
+:root {
+    --ecru: #F5F0E6;
+    --ecru-light: #FAF8F3;
+    --brown: #5C4033;
+    --brown-light: #7A5C4F;
+    --brown-dark: #3E2A1E;
+    --brown-subtle: #A8907A;
+    --accent: #C4A882;
+    --white: #FFFFFF;
+    --shadow: rgba(92, 64, 51, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    background-color: var(--ecru-light);
+    color: var(--brown);
+    min-height: 100vh;
+}
+
+/* ========== PAGES ========== */
+.page {
+    display: none;
+    min-height: 100vh;
+    animation: fadeIn 0.6s ease-in;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========== HERO ========== */
+.hero {
+    text-align: center;
+    padding: 60px 20px 40px;
+    background-color: var(--ecru);
+    border-bottom: 1px solid var(--accent);
+}
+
+.hero-small {
+    padding: 40px 20px 30px;
+}
+
+.save-the-date {
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--brown);
+    margin-bottom: 20px;
+}
+
+.couple-names {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4rem;
+    font-weight: 400;
+    color: var(--brown-dark);
+    line-height: 1.2;
+    margin-bottom: 15px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--brown-light);
+    margin-bottom: 8px;
+}
+
+.wedding-date {
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: var(--brown);
+    margin-top: 10px;
+}
+
+/* ========== RSVP FORM ========== */
+.rsvp-section {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 50px 25px 60px;
+}
+
+.rsvp-section h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 35px;
+    color: var(--brown-dark);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--brown);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 14px 16px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    background-color: var(--white);
+    color: var(--brown-dark);
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--brown);
+}
+
+.form-group input::placeholder {
+    color: var(--brown-subtle);
+    font-style: italic;
+}
+
+/* Radio buttons */
+.radio-group {
+    display: flex;
+    gap: 30px;
+    margin-top: 8px;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.radio-label input[type="radio"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    transition: border-color 0.3s;
+}
+
+.radio-label input[type="radio"]:checked {
+    border-color: var(--brown);
+}
+
+.radio-label input[type="radio"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 10px;
+    height: 10px;
+    background-color: var(--brown);
+    border-radius: 50%;
+}
+
+/* ========== BUTTONS ========== */
+.btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ecru-light);
+    background-color: var(--brown);
+    border: 2px solid var(--brown);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background-color: var(--brown-dark);
+    border-color: var(--brown-dark);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--brown);
+    margin-top: 15px;
+}
+
+.btn-secondary:hover {
+    background-color: var(--ecru);
+    color: var(--brown-dark);
+}
+
+.btn-accept {
+    background-color: #6B8F5E;
+    border-color: #6B8F5E;
+    color: var(--white);
+    padding: 8px 18px;
+    width: auto;
+    display: inline-block;
+    font-size: 0.9rem;
+    margin: 4px;
+}
+
+.btn-accept:hover {
+    background-color: #5A7A4F;
+    border-color: #5A7A4F;
+}
+
+.btn-refuse {
+    background-color: #A05050;
+    border-color: #A05050;
+    color: var(--white);
+    padding: 8px 18px;
+    width: auto;
+    display: inline-block;
+    font-size: 0.9rem;
+    margin: 4px;
+}
+
+.btn-refuse:hover {
+    background-color: #8B3E3E;
+    border-color: #8B3E3E;
+}
+
+/* ========== ADMIN LINK ========== */
+.admin-link {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.admin-link a {
+    color: var(--brown-subtle);
+    font-size: 0.9rem;
+    text-decoration: none;
+    font-style: italic;
+    transition: color 0.3s;
+}
+
+.admin-link a:hover {
+    color: var(--brown);
+}
+
+/* ========== MESSAGE SECTIONS ========== */
+.message-section {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 60px 25px;
+    text-align: center;
+}
+
+.status-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.pending-icon {
+    color: var(--accent);
+}
+
+.refused-icon {
+    color: #A05050;
+}
+
+.message-section h2 {
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: var(--brown-dark);
+}
+
+.message-text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--brown-light);
+    margin-bottom: 30px;
+}
+
+.guest-info {
+    font-size: 1rem;
+    color: var(--brown-subtle);
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+/* ========== COUNTDOWN ========== */
+.countdown-section {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 60px 25px;
+    text-align: center;
+}
+
+.countdown-section h2 {
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 40px;
+    color: var(--brown-dark);
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100px;
+    padding: 20px 15px;
+    background-color: var(--ecru);
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+}
+
+.countdown-number {
+    font-size: 2.8rem;
+    font-weight: 600;
+    color: var(--brown-dark);
+    line-height: 1;
+}
+
+.countdown-label {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--brown-subtle);
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.welcome-message {
+    margin-top: 40px;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--brown-light);
+}
+
+/* ========== ADMIN ========== */
+.admin-login-section {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 50px 25px;
+}
+
+.admin-section {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 30px 25px 60px;
+}
+
+.admin-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--accent);
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 12px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--brown-subtle);
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: -2px;
+}
+
+.tab-btn.active {
+    color: var(--brown-dark);
+    border-bottom-color: var(--brown);
+}
+
+.tab-btn:hover {
+    color: var(--brown);
+}
+
+/* Guest cards */
+.guest-card {
+    background-color: var(--white);
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 15px;
+    transition: box-shadow 0.3s;
+}
+
+.guest-card:hover {
+    box-shadow: 0 2px 12px var(--shadow);
+}
+
+.guest-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.guest-card-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--brown-dark);
+}
+
+.guest-card-email {
+    font-size: 0.9rem;
+    color: var(--brown-subtle);
+    font-style: italic;
+}
+
+.guest-card-companion {
+    font-size: 1rem;
+    color: var(--brown-light);
+    margin-top: 6px;
+}
+
+.guest-card-actions {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+}
+
+.guest-card-status {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.status-accepted {
+    background-color: #E8F0E4;
+    color: #5A7A4F;
+}
+
+.status-refused {
+    background-color: #F0E4E4;
+    color: #8B3E3E;
+}
+
+.empty-list {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--brown-subtle);
+    font-style: italic;
+    font-size: 1.1rem;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 600px) {
+    .couple-names {
+        font-size: 2.8rem;
+    }
+
+    .save-the-date {
+        font-size: 1.1rem;
+        letter-spacing: 0.25em;
+    }
+
+    .countdown {
+        gap: 15px;
+    }
+
+    .countdown-item {
+        min-width: 75px;
+        padding: 15px 10px;
+    }
+
+    .countdown-number {
+        font-size: 2rem;
+    }
+
+    .guest-card-header {
+        flex-direction: column;
+    }
+
+    .guest-card-actions {
+        flex-wrap: wrap;
+    }
+}

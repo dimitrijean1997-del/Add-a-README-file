@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alice & Dimitri - 04/09/2027</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ========== PAGE ACCUEIL / INSCRIPTION ========== -->
+    <div id="page-welcome" class="page active">
+        <header class="hero">
+            <p class="save-the-date">SAVE THE DATE</p>
+            <h1 class="couple-names">Alice & Dimitri</h1>
+            <p class="subtitle">célèbrent leur union</p>
+            <p class="wedding-date">04/09/2027</p>
+        </header>
+
+        <section class="rsvp-section">
+            <h2>Confirmer votre présence</h2>
+            <form id="rsvp-form">
+                <div class="form-group">
+                    <label for="guest-name">Votre nom complet</label>
+                    <input type="text" id="guest-name" required placeholder="Prénom Nom">
+                </div>
+                <div class="form-group">
+                    <label for="guest-email">Votre email</label>
+                    <input type="email" id="guest-email" required placeholder="votre@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Souhaitez-vous venir accompagné(e) ?</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="plus-one" value="no" checked>
+                            <span>Non</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="plus-one" value="yes">
+                            <span>Oui</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group" id="companion-group" style="display:none;">
+                    <label for="companion-name">Nom de votre accompagnant(e)</label>
+                    <input type="text" id="companion-name" placeholder="Prénom Nom">
+                </div>
+                <button type="submit" class="btn">Envoyer</button>
+            </form>
+            <p class="admin-link">
+                <a href="#" id="show-admin">Accès administrateur</a>
+            </p>
+        </section>
+    </div>
+
+    <!-- ========== PAGE CONFIRMATION (en attente) ========== -->
+    <div id="page-pending" class="page">
+        <header class="hero hero-small">
+            <h1 class="couple-names">Alice & Dimitri</h1>
+        </header>
+        <section class="message-section">
+            <div class="status-icon pending-icon">&#9202;</div>
+            <h2>Merci pour votre inscription !</h2>
+            <p class="message-text">Votre demande a bien été enregistrée.<br>
+            Vous recevrez une confirmation prochainement.</p>
+            <p class="guest-info" id="pending-info"></p>
+            <button class="btn btn-secondary" id="btn-back-home">Retour</button>
+        </section>
+    </div>
+
+    <!-- ========== PAGE COUNTDOWN (validé) ========== -->
+    <div id="page-countdown" class="page">
+        <header class="hero">
+            <p class="save-the-date">SAVE THE DATE</p>
+            <h1 class="couple-names">Alice & Dimitri</h1>
+            <p class="subtitle">célèbrent leur union</p>
+            <p class="wedding-date">04/09/2027</p>
+        </header>
+        <section class="countdown-section">
+            <h2>Le grand jour approche</h2>
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">000</span>
+                    <span class="countdown-label">Jours</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span class="countdown-label">Heures</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span class="countdown-label">Secondes</span>
+                </div>
+            </div>
+            <p class="welcome-message" id="welcome-message"></p>
+        </section>
+    </div>
+
+    <!-- ========== PAGE REFUSÉ ========== -->
+    <div id="page-refused" class="page">
+        <header class="hero hero-small">
+            <h1 class="couple-names">Alice & Dimitri</h1>
+        </header>
+        <section class="message-section">
+            <div class="status-icon refused-icon">&#10005;</div>
+            <h2>Inscription non validée</h2>
+            <p class="message-text">Nous sommes désolés, votre accompagnant(e) n'a pas pu être accepté(e).<br>
+            Vous êtes néanmoins le/la bienvenu(e) au mariage !</p>
+            <button class="btn" id="btn-back-countdown">Voir le compte à rebours</button>
+        </section>
+    </div>
+
+    <!-- ========== PAGE ADMIN ========== -->
+    <div id="page-admin-login" class="page">
+        <header class="hero hero-small">
+            <h1 class="couple-names">Alice & Dimitri</h1>
+            <p class="subtitle">Administration</p>
+        </header>
+        <section class="admin-login-section">
+            <form id="admin-login-form">
+                <div class="form-group">
+                    <label for="admin-password">Mot de passe administrateur</label>
+                    <input type="password" id="admin-password" required placeholder="Mot de passe">
+                </div>
+                <button type="submit" class="btn">Connexion</button>
+            </form>
+            <button class="btn btn-secondary" id="btn-admin-back">Retour</button>
+        </section>
+    </div>
+
+    <div id="page-admin" class="page">
+        <header class="hero hero-small">
+            <h1 class="couple-names">Alice & Dimitri</h1>
+            <p class="subtitle">Gestion des invités</p>
+        </header>
+        <section class="admin-section">
+            <div class="admin-tabs">
+                <button class="tab-btn active" data-tab="pending">En attente</button>
+                <button class="tab-btn" data-tab="accepted">Acceptés</button>
+                <button class="tab-btn" data-tab="refused">Refusés</button>
+            </div>
+            <div class="guest-list" id="guest-list"></div>
+            <button class="btn btn-secondary" id="btn-admin-logout">Déconnexion</button>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
