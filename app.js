@@ -275,5 +275,18 @@ document.getElementById('btn-back-countdown').addEventListener('click', () => {
     showPage('page-welcome');
 });
 
+// ========== SPLASH SCREEN ==========
+function initSplash() {
+    const splash = document.getElementById('splash-screen');
+    // Show splash for 2.5s, then fade out over 0.8s
+    setTimeout(() => {
+        splash.classList.add('fade-out');
+        setTimeout(() => {
+            splash.style.display = 'none';
+        }, 800);
+    }, 2500);
+}
+
 // ========== INIT ==========
+initSplash();
 checkGuestStatus();
