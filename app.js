@@ -133,28 +133,38 @@ function startCountdown() {
         const now = new Date();
         const diff = WEDDING_DATE - now;
 
-        if (diff <= 0) {
-            document.getElementById('days').textContent = '0';
-            document.getElementById('hours').textContent = '0';
-            document.getElementById('minutes').textContent = '0';
-            document.getElementById('seconds').textContent = '0';
-            return;
-        }
+        const days = diff <= 0 ? 0 : Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = diff <= 0 ? 0 : Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = diff <= 0 ? 0 : Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = diff <= 0 ? 0 : Math.floor((diff % (1000 * 60)) / 1000);
 
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        // Update countdown page
+        const daysEl = document.getElementById('days');
+        if (daysEl) daysEl.textContent = days;
+        const hoursEl = document.getElementById('hours');
+        if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, '0');
+        const minutesEl = document.getElementById('minutes');
+        if (minutesEl) minutesEl.textContent = minutes.toString().padStart(2, '0');
+        const secondsEl = document.getElementById('seconds');
+        if (secondsEl) secondsEl.textContent = seconds.toString().padStart(2, '0');
 
-        document.getElementById('days').textContent = days;
-        document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-        document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-        document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        // Update inline banner countdown
+        const daysInline = document.getElementById('days-inline');
+        if (daysInline) daysInline.textContent = days;
+        const hoursInline = document.getElementById('hours-inline');
+        if (hoursInline) hoursInline.textContent = hours.toString().padStart(2, '0');
+        const minutesInline = document.getElementById('minutes-inline');
+        if (minutesInline) minutesInline.textContent = minutes.toString().padStart(2, '0');
+        const secondsInline = document.getElementById('seconds-inline');
+        if (secondsInline) secondsInline.textContent = seconds.toString().padStart(2, '0');
     }
 
     update();
     setInterval(update, 1000);
 }
+
+// Start countdown immediately on page load
+startCountdown();
 
 // ========== ADMIN ==========
 document.getElementById('show-admin').addEventListener('click', (e) => {
