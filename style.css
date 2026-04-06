@@ -93,21 +93,21 @@ body {
 }
 
 .hero-logo {
-    width: 160px;
-    height: 160px;
+    width: 200px;
+    height: 200px;
     object-fit: contain;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     filter: brightness(0.3) sepia(1) saturate(2) hue-rotate(-10deg);
 }
 
 .save-the-date {
     font-family: 'Playfair Display SC', serif;
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 400;
     letter-spacing: 0.35em;
     text-transform: uppercase;
     color: var(--brown);
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .hero-logo.small {
@@ -118,7 +118,7 @@ body {
 
 .couple-names {
     font-family: 'Mrs Saint Delafield', cursive;
-    font-size: 4.5rem;
+    font-size: 6rem;
     font-weight: 400;
     color: var(--brown-dark);
     line-height: 1.2;
@@ -126,20 +126,20 @@ body {
 }
 
 .subtitle {
-    font-size: 1.15rem;
+    font-size: 1.5rem;
     font-weight: 400;
     font-style: italic;
     color: var(--brown-light);
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .wedding-date {
     font-family: 'Playfair Display SC', serif;
-    font-size: 1.6rem;
+    font-size: 2rem;
     font-weight: 400;
     letter-spacing: 0.1em;
     color: var(--brown);
-    margin-top: 8px;
+    margin-top: 12px;
 }
 
 /* ========== COUNTDOWN BANNER ========== */
@@ -167,7 +167,7 @@ body {
 
 .countdown-inline-number {
     font-family: 'Playfair Display SC', serif;
-    font-size: 2.4rem;
+    font-size: 3.2rem;
     font-weight: 400;
     color: var(--brown-dark);
     line-height: 1;
@@ -175,7 +175,7 @@ body {
 }
 
 .countdown-inline-label {
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: 400;
     color: var(--brown-subtle);
     margin-top: 6px;
@@ -205,7 +205,7 @@ body {
 
 .main-nav a {
     font-family: 'Playfair Display SC', serif;
-    font-size: 0.85rem;
+    font-size: 1.1rem;
     font-weight: 400;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -388,7 +388,7 @@ body {
 .rsvp-card h2 {
     text-align: center;
     font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
+    font-size: 2.4rem;
     font-weight: 500;
     font-style: italic;
     color: var(--brown-dark);
@@ -402,7 +402,7 @@ body {
 
 .form-group label {
     display: block;
-    font-size: 0.95rem;
+    font-size: 1.15rem;
     font-weight: 500;
     margin-bottom: 8px;
     color: var(--brown);
@@ -414,7 +414,7 @@ body {
     width: 100%;
     padding: 13px 16px;
     font-family: 'Playfair Display', serif;
-    font-size: 1rem;
+    font-size: 1.15rem;
     border: 1px solid var(--accent);
     border-radius: 4px;
     background-color: var(--white);
@@ -478,7 +478,7 @@ body {
     width: 100%;
     padding: 14px;
     font-family: 'Playfair Display SC', serif;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 400;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -548,14 +548,14 @@ body {
 
 .footer-names {
     font-family: 'Mrs Saint Delafield', cursive;
-    font-size: 2rem;
+    font-size: 2.8rem;
     color: var(--brown-dark);
     margin-bottom: 5px;
 }
 
 .footer-date {
     font-family: 'Playfair Display SC', serif;
-    font-size: 0.95rem;
+    font-size: 1.2rem;
     letter-spacing: 0.1em;
     color: var(--brown-subtle);
 }
