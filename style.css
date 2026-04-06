@@ -18,7 +18,7 @@
 }
 
 body {
-    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    font-family: 'Playfair Display', 'Georgia', serif;
     background-color: var(--ecru-light);
     color: var(--brown);
     min-height: 100vh;
@@ -62,7 +62,7 @@ body {
 }
 
 .couple-names {
-    font-family: 'Great Vibes', cursive;
+    font-family: 'Dancing Script', cursive;
     font-size: 4rem;
     font-weight: 400;
     color: var(--brown-dark);
@@ -118,7 +118,7 @@ body {
 .form-group input[type="password"] {
     width: 100%;
     padding: 14px 16px;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 1.1rem;
     border: 1px solid var(--accent);
     border-radius: 4px;
@@ -183,7 +183,7 @@ body {
     display: block;
     width: 100%;
     padding: 15px;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 1.15rem;
     font-weight: 600;
     letter-spacing: 0.1em;
@@ -384,7 +384,7 @@ body {
 .tab-btn {
     flex: 1;
     padding: 12px;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 1rem;
     font-weight: 500;
     color: var(--brown-subtle);
