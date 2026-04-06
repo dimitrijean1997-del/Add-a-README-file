@@ -93,11 +93,11 @@ body {
 }
 
 .hero-logo {
-    width: 140px;
-    height: 140px;
-    object-fit: cover;
-    border-radius: 50%;
+    width: 160px;
+    height: 160px;
+    object-fit: contain;
     margin-bottom: 20px;
+    filter: brightness(0.3) sepia(1) saturate(2) hue-rotate(-10deg);
 }
 
 .hero-logo.small {
