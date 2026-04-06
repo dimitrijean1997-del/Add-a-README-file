@@ -7,6 +7,8 @@
     --brown-dark: #3E2A1E;
     --brown-subtle: #A8907A;
     --accent: #C4A882;
+    --olive: #7A8B5C;
+    --olive-light: #9AAB7C;
     --white: #FFFFFF;
     --shadow: rgba(92, 64, 51, 0.1);
 }
@@ -15,6 +17,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -53,28 +59,15 @@ body {
 }
 
 @keyframes logoReveal {
-    0% {
-        opacity: 0;
-        transform: scale(0.7);
-    }
-    40% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    70% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1.05);
-    }
+    0% { opacity: 0; transform: scale(0.7); }
+    40% { opacity: 1; transform: scale(1); }
+    70% { opacity: 1; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.05); }
 }
 
 /* ========== PAGES ========== */
 .page {
     display: none;
-    min-height: 100vh;
     animation: fadeIn 0.6s ease-in;
 }
 
@@ -90,72 +83,292 @@ body {
 /* ========== HERO ========== */
 .hero {
     text-align: center;
-    padding: 60px 20px 40px;
+    padding: 50px 20px 40px;
     background-color: var(--ecru);
-    border-bottom: 1px solid var(--accent);
 }
 
 .hero-small {
-    padding: 40px 20px 30px;
+    padding: 40px 20px 25px;
 }
 
-.save-the-date {
-    font-family: 'Playfair Display SC', serif;
-    font-size: 1.4rem;
-    font-weight: 400;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: var(--brown);
+.hero-logo {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
     margin-bottom: 20px;
+}
+
+.hero-logo.small {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 15px;
 }
 
 .couple-names {
     font-family: 'Mrs Saint Delafield', cursive;
-    font-size: 4rem;
+    font-size: 4.5rem;
     font-weight: 400;
     color: var(--brown-dark);
     line-height: 1.2;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .subtitle {
-    font-size: 1.2rem;
-    font-weight: 300;
+    font-size: 1.15rem;
+    font-weight: 400;
     font-style: italic;
     color: var(--brown-light);
     margin-bottom: 8px;
 }
 
 .wedding-date {
-    font-size: 1.5rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    color: var(--brown);
-    margin-top: 10px;
-}
-
-/* ========== RSVP FORM ========== */
-.rsvp-section {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 50px 25px 60px;
-}
-
-.rsvp-section h2 {
-    text-align: center;
-    font-size: 1.8rem;
+    font-family: 'Playfair Display SC', serif;
+    font-size: 1.6rem;
     font-weight: 400;
-    margin-bottom: 35px;
+    letter-spacing: 0.1em;
+    color: var(--brown);
+    margin-top: 8px;
+}
+
+/* ========== BANNER ========== */
+.banner {
+    width: 100%;
+    max-height: 350px;
+    overflow: hidden;
+}
+
+.banner-img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    display: block;
+}
+
+.banner-placeholder {
+    height: 200px;
+    background: linear-gradient(135deg, var(--olive-light) 0%, var(--olive) 50%, var(--brown-subtle) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner-placeholder .banner-img {
+    display: none;
+}
+
+/* ========== NAVIGATION ========== */
+.main-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 18px 20px;
+    background-color: var(--ecru);
+    border-top: 1px solid var(--accent);
+    border-bottom: 1px solid var(--accent);
+    flex-wrap: wrap;
+}
+
+.main-nav a {
+    font-family: 'Playfair Display SC', serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brown);
+    text-decoration: none;
+    transition: color 0.3s;
+    padding: 4px 8px;
+}
+
+.main-nav a:hover {
     color: var(--brown-dark);
 }
 
+.nav-sep {
+    color: var(--brown-subtle);
+    font-size: 0.8rem;
+}
+
+/* ========== SECTIONS COMMON ========== */
+.section-header {
+    text-align: center;
+    margin-bottom: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--brown-dark);
+}
+
+/* Olive branches */
+.olive-branch {
+    display: inline-block;
+    width: 60px;
+    height: 20px;
+    position: relative;
+}
+
+.olive-branch::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 50px;
+    height: 2px;
+    background-color: var(--olive);
+    border-radius: 1px;
+}
+
+.olive-branch::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50% 0;
+    background-color: var(--olive-light);
+    opacity: 0.6;
+}
+
+.olive-branch.left::before { right: 0; }
+.olive-branch.left::after { right: 10px; transform: rotate(-30deg); }
+.olive-branch.right::before { left: 0; }
+.olive-branch.right::after { left: 10px; transform: rotate(30deg); }
+
+/* ========== SECTION LIEU ========== */
+.section-lieu {
+    padding: 50px 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.venue-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.venue-photo {
+    border-radius: 6px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    box-shadow: 0 3px 15px var(--shadow);
+}
+
+.venue-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+}
+
+.venue-photo:hover img {
+    transform: scale(1.05);
+}
+
+/* ========== SECTION PROGRAMME ========== */
+.section-programme {
+    padding: 50px 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    border-top: 1px solid var(--accent);
+}
+
+.programme-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.programme-item {
+    text-align: center;
+    padding: 25px 20px;
+}
+
+.programme-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    opacity: 0.8;
+}
+
+.programme-item h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--brown-dark);
+    margin-bottom: 10px;
+}
+
+.programme-item p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--brown-light);
+}
+
+/* ========== SECTION RSVP ========== */
+.section-rsvp {
+    padding: 50px 30px 60px;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.rsvp-card {
+    border: 2px solid var(--accent);
+    border-radius: 12px;
+    padding: 40px 35px;
+    background-color: var(--ecru);
+    position: relative;
+}
+
+.rsvp-card::before,
+.rsvp-card::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-color: var(--olive-light);
+    opacity: 0.5;
+}
+
+.rsvp-card::before {
+    top: 10px;
+    left: 10px;
+    border-top: 2px solid;
+    border-left: 2px solid;
+}
+
+.rsvp-card::after {
+    bottom: 10px;
+    right: 10px;
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+}
+
+.rsvp-card h2 {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--brown-dark);
+    margin-bottom: 30px;
+}
+
+/* ========== FORM ========== */
 .form-group {
-    margin-bottom: 25px;
+    margin-bottom: 22px;
 }
 
 .form-group label {
     display: block;
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 500;
     margin-bottom: 8px;
     color: var(--brown);
@@ -165,9 +378,9 @@ body {
 .form-group input[type="email"],
 .form-group input[type="password"] {
     width: 100%;
-    padding: 14px 16px;
+    padding: 13px 16px;
     font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
+    font-size: 1rem;
     border: 1px solid var(--accent);
     border-radius: 4px;
     background-color: var(--white);
@@ -185,7 +398,6 @@ body {
     font-style: italic;
 }
 
-/* Radio buttons */
 .radio-group {
     display: flex;
     gap: 30px;
@@ -197,13 +409,13 @@ body {
     align-items: center;
     gap: 8px;
     cursor: pointer;
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 .radio-label input[type="radio"] {
     appearance: none;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     border: 2px solid var(--accent);
     border-radius: 50%;
     cursor: pointer;
@@ -220,8 +432,8 @@ body {
     position: absolute;
     top: 3px;
     left: 3px;
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     background-color: var(--brown);
     border-radius: 50%;
 }
@@ -230,11 +442,11 @@ body {
 .btn {
     display: block;
     width: 100%;
-    padding: 15px;
-    font-family: 'Playfair Display', serif;
-    font-size: 1.15rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
+    padding: 14px;
+    font-family: 'Playfair Display SC', serif;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--ecru-light);
     background-color: var(--brown);
@@ -268,7 +480,7 @@ body {
     padding: 8px 18px;
     width: auto;
     display: inline-block;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     margin: 4px;
 }
 
@@ -284,7 +496,7 @@ body {
     padding: 8px 18px;
     width: auto;
     display: inline-block;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     margin: 4px;
 }
 
@@ -293,22 +505,42 @@ body {
     border-color: #8B3E3E;
 }
 
-/* ========== ADMIN LINK ========== */
-.admin-link {
+/* ========== FOOTER ========== */
+.site-footer {
     text-align: center;
-    margin-top: 40px;
+    padding: 40px 20px;
+    border-top: 1px solid var(--accent);
+}
+
+.footer-names {
+    font-family: 'Mrs Saint Delafield', cursive;
+    font-size: 2rem;
+    color: var(--brown-dark);
+    margin-bottom: 5px;
+}
+
+.footer-date {
+    font-family: 'Playfair Display SC', serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
+    color: var(--brown-subtle);
+}
+
+.admin-link {
+    margin-top: 25px;
 }
 
 .admin-link a {
     color: var(--brown-subtle);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     text-decoration: none;
     font-style: italic;
-    transition: color 0.3s;
+    opacity: 0.6;
+    transition: opacity 0.3s;
 }
 
 .admin-link a:hover {
-    color: var(--brown);
+    opacity: 1;
 }
 
 /* ========== MESSAGE SECTIONS ========== */
@@ -324,13 +556,8 @@ body {
     margin-bottom: 20px;
 }
 
-.pending-icon {
-    color: var(--accent);
-}
-
-.refused-icon {
-    color: #A05050;
-}
+.pending-icon { color: var(--accent); }
+.refused-icon { color: #A05050; }
 
 .message-section h2 {
     font-size: 1.8rem;
@@ -340,7 +567,7 @@ body {
 }
 
 .message-text {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     line-height: 1.7;
     color: var(--brown-light);
     margin-bottom: 30px;
@@ -364,6 +591,7 @@ body {
 .countdown-section h2 {
     font-size: 1.8rem;
     font-weight: 400;
+    font-style: italic;
     margin-bottom: 40px;
     color: var(--brown-dark);
 }
@@ -371,7 +599,7 @@ body {
 .countdown {
     display: flex;
     justify-content: center;
-    gap: 25px;
+    gap: 20px;
     flex-wrap: wrap;
 }
 
@@ -394,7 +622,7 @@ body {
 }
 
 .countdown-label {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     font-weight: 400;
     color: var(--brown-subtle);
     margin-top: 8px;
@@ -433,7 +661,7 @@ body {
     flex: 1;
     padding: 12px;
     font-family: 'Playfair Display', serif;
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 500;
     color: var(--brown-subtle);
     background: none;
@@ -449,11 +677,8 @@ body {
     border-bottom-color: var(--brown);
 }
 
-.tab-btn:hover {
-    color: var(--brown);
-}
+.tab-btn:hover { color: var(--brown); }
 
-/* Guest cards */
 .guest-card {
     background-color: var(--white);
     border: 1px solid var(--accent);
@@ -463,9 +688,7 @@ body {
     transition: box-shadow 0.3s;
 }
 
-.guest-card:hover {
-    box-shadow: 0 2px 12px var(--shadow);
-}
+.guest-card:hover { box-shadow: 0 2px 12px var(--shadow); }
 
 .guest-card-header {
     display: flex;
@@ -475,19 +698,19 @@ body {
 }
 
 .guest-card-name {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     font-weight: 600;
     color: var(--brown-dark);
 }
 
 .guest-card-email {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--brown-subtle);
     font-style: italic;
 }
 
 .guest-card-companion {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--brown-light);
     margin-top: 6px;
 }
@@ -502,41 +725,53 @@ body {
     display: inline-block;
     padding: 4px 12px;
     border-radius: 20px;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 500;
 }
 
-.status-accepted {
-    background-color: #E8F0E4;
-    color: #5A7A4F;
-}
-
-.status-refused {
-    background-color: #F0E4E4;
-    color: #8B3E3E;
-}
+.status-accepted { background-color: #E8F0E4; color: #5A7A4F; }
+.status-refused { background-color: #F0E4E4; color: #8B3E3E; }
 
 .empty-list {
     text-align: center;
     padding: 40px 20px;
     color: var(--brown-subtle);
     font-style: italic;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
 }
 
 /* ========== RESPONSIVE ========== */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .couple-names {
-        font-size: 2.8rem;
+        font-size: 3rem;
     }
 
-    .save-the-date {
-        font-size: 1.1rem;
-        letter-spacing: 0.25em;
+    .hero-logo {
+        width: 110px;
+        height: 110px;
     }
 
-    .countdown {
+    .venue-gallery {
+        grid-template-columns: 1fr;
         gap: 15px;
+    }
+
+    .programme-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .main-nav {
+        gap: 4px;
+    }
+
+    .main-nav a {
+        font-size: 0.75rem;
+        padding: 4px 5px;
+    }
+
+    .rsvp-card {
+        padding: 30px 20px;
     }
 
     .countdown-item {

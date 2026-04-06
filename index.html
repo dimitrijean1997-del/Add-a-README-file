@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alice & Dimitri - 04/09/2027</title>
+    <title>Alice & Dimitri - 04 Septembre 2027</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
@@ -15,54 +15,130 @@
         <img src="logo-ad.png" alt="A&D" class="splash-logo">
     </div>
 
-    <!-- ========== PAGE ACCUEIL / INSCRIPTION ========== -->
+    <!-- ========== PAGE PRINCIPALE ========== -->
     <div id="page-welcome" class="page active">
+
+        <!-- HERO -->
         <header class="hero">
-            <p class="save-the-date">SAVE THE DATE</p>
+            <img src="logo-ad.png" alt="A&D" class="hero-logo">
             <h1 class="couple-names">Alice & Dimitri</h1>
             <p class="subtitle">célèbrent leur union</p>
-            <p class="wedding-date">04/09/2027</p>
+            <p class="wedding-date">04 Septembre 2027</p>
         </header>
 
-        <section class="rsvp-section">
-            <h2>Confirmer votre présence</h2>
-            <form id="rsvp-form">
-                <div class="form-group">
-                    <label for="guest-name">Votre nom complet</label>
-                    <input type="text" id="guest-name" required placeholder="Prénom Nom">
+        <!-- PHOTO BANNER -->
+        <div class="banner">
+            <img src="venue-banner.jpg" alt="Le lieu" class="banner-img" onerror="this.parentElement.classList.add('banner-placeholder')">
+        </div>
+
+        <!-- NAVIGATION -->
+        <nav class="main-nav">
+            <a href="#accueil">Accueil</a>
+            <span class="nav-sep">|</span>
+            <a href="#histoire">Notre Histoire</a>
+            <span class="nav-sep">|</span>
+            <a href="#lieu">Le Lieu</a>
+            <span class="nav-sep">|</span>
+            <a href="#programme">Programme</a>
+            <span class="nav-sep">|</span>
+            <a href="#infos">Infos Pratiques</a>
+            <span class="nav-sep">|</span>
+            <a href="#rsvp">RSVP</a>
+        </nav>
+
+        <!-- SECTION LE LIEU -->
+        <section id="lieu" class="section-lieu">
+            <div class="section-header">
+                <span class="olive-branch left"></span>
+                <h2>Découvrez la Villa d'Avenir</h2>
+                <span class="olive-branch right"></span>
+            </div>
+            <div class="venue-gallery">
+                <div class="venue-photo">
+                    <img src="venue-1.jpg" alt="La villa" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22><rect fill=%22%23d4c5b0%22 width=%22400%22 height=%22300%22/><text x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%237A5C4F%22 font-size=%2218%22>Photo 1</text></svg>'">
                 </div>
-                <div class="form-group">
-                    <label for="guest-email">Votre email</label>
-                    <input type="email" id="guest-email" required placeholder="votre@email.com">
+                <div class="venue-photo">
+                    <img src="venue-2.jpg" alt="Le jardin" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22><rect fill=%22%23d4c5b0%22 width=%22400%22 height=%22300%22/><text x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%237A5C4F%22 font-size=%2218%22>Photo 2</text></svg>'">
                 </div>
-                <div class="form-group">
-                    <label>Souhaitez-vous venir accompagné(e) ?</label>
-                    <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="plus-one" value="no" checked>
-                            <span>Non</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="plus-one" value="yes">
-                            <span>Oui</span>
-                        </label>
+                <div class="venue-photo">
+                    <img src="venue-3.jpg" alt="La réception" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22><rect fill=%22%23d4c5b0%22 width=%22400%22 height=%22300%22/><text x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%237A5C4F%22 font-size=%2218%22>Photo 3</text></svg>'">
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION PROGRAMME -->
+        <section id="programme" class="section-programme">
+            <div class="section-header">
+                <h2>Le Programme des Festivités</h2>
+            </div>
+            <div class="programme-grid">
+                <div class="programme-item">
+                    <div class="programme-icon">&#9962;</div>
+                    <h3>Cérémonie</h3>
+                    <p>Consacrons ce moment de bonheur lors de la Cérémonie.</p>
+                </div>
+                <div class="programme-item">
+                    <div class="programme-icon">&#127864;</div>
+                    <h3>Cocktail</h3>
+                    <p>Découvrez le lieu autour d'un cocktail sur le gazon d'honneur.</p>
+                </div>
+                <div class="programme-item">
+                    <div class="programme-icon">&#127860;</div>
+                    <h3>Dîner</h3>
+                    <p>Nous vous retrouverons pour le dîner de la réception.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION RSVP -->
+        <section id="rsvp" class="section-rsvp">
+            <div class="rsvp-card">
+                <h2>Confirmer Votre Présence</h2>
+                <form id="rsvp-form">
+                    <div class="form-group">
+                        <label for="guest-name">Nom</label>
+                        <input type="text" id="guest-name" required placeholder="Votre nom complet">
                     </div>
-                </div>
-                <div class="form-group" id="companion-group" style="display:none;">
-                    <label for="companion-name">Nom de votre accompagnant(e)</label>
-                    <input type="text" id="companion-name" placeholder="Prénom Nom">
-                </div>
-                <button type="submit" class="btn">Envoyer</button>
-            </form>
+                    <div class="form-group">
+                        <label for="guest-email">Email</label>
+                        <input type="email" id="guest-email" required placeholder="votre@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Souhaitez-vous venir accompagné(e) ?</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="plus-one" value="no" checked>
+                                <span>Non</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="plus-one" value="yes">
+                                <span>Oui</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group" id="companion-group" style="display:none;">
+                        <label for="companion-name">Nom de votre accompagnant(e)</label>
+                        <input type="text" id="companion-name" placeholder="Prénom Nom">
+                    </div>
+                    <button type="submit" class="btn">Envoyer</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="site-footer">
+            <p class="footer-names">Alice & Dimitri</p>
+            <p class="footer-date">04 Septembre 2027</p>
             <p class="admin-link">
                 <a href="#" id="show-admin">Accès administrateur</a>
             </p>
-        </section>
+        </footer>
     </div>
 
     <!-- ========== PAGE CONFIRMATION (en attente) ========== -->
     <div id="page-pending" class="page">
         <header class="hero hero-small">
+            <img src="logo-ad.png" alt="A&D" class="hero-logo small">
             <h1 class="couple-names">Alice & Dimitri</h1>
         </header>
         <section class="message-section">
@@ -78,10 +154,10 @@
     <!-- ========== PAGE COUNTDOWN (validé) ========== -->
     <div id="page-countdown" class="page">
         <header class="hero">
-            <p class="save-the-date">SAVE THE DATE</p>
+            <img src="logo-ad.png" alt="A&D" class="hero-logo">
             <h1 class="couple-names">Alice & Dimitri</h1>
             <p class="subtitle">célèbrent leur union</p>
-            <p class="wedding-date">04/09/2027</p>
+            <p class="wedding-date">04 Septembre 2027</p>
         </header>
         <section class="countdown-section">
             <h2>Le grand jour approche</h2>
@@ -110,6 +186,7 @@
     <!-- ========== PAGE REFUSÉ ========== -->
     <div id="page-refused" class="page">
         <header class="hero hero-small">
+            <img src="logo-ad.png" alt="A&D" class="hero-logo small">
             <h1 class="couple-names">Alice & Dimitri</h1>
         </header>
         <section class="message-section">
@@ -124,6 +201,7 @@
     <!-- ========== PAGE ADMIN ========== -->
     <div id="page-admin-login" class="page">
         <header class="hero hero-small">
+            <img src="logo-ad.png" alt="A&D" class="hero-logo small">
             <h1 class="couple-names">Alice & Dimitri</h1>
             <p class="subtitle">Administration</p>
         </header>
@@ -141,6 +219,7 @@
 
     <div id="page-admin" class="page">
         <header class="hero hero-small">
+            <img src="logo-ad.png" alt="A&D" class="hero-logo small">
             <h1 class="couple-names">Alice & Dimitri</h1>
             <p class="subtitle">Gestion des invités</p>
         </header>
