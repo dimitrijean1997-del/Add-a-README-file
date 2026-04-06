@@ -52,10 +52,10 @@ body {
 }
 
 .splash-logo {
-    width: 280px;
-    height: 280px;
+    width: 400px;
+    height: 400px;
     object-fit: contain;
-    filter: brightness(0.55) sepia(0.4) saturate(1.2);
+    filter: brightness(0.3) sepia(1) saturate(2) hue-rotate(-10deg);
     animation: logoReveal 2s ease-out forwards;
 }
 
