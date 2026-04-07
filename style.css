@@ -52,8 +52,8 @@ body {
 }
 
 .splash-logo {
-    width: 400px;
-    height: 400px;
+    width: 550px;
+    height: 550px;
     object-fit: contain;
     animation: logoReveal 2s ease-out forwards;
 }
