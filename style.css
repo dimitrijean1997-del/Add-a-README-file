@@ -92,21 +92,20 @@ body {
 }
 
 .hero-logo {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     object-fit: contain;
     margin-bottom: 25px;
-    filter: brightness(0.3) sepia(1) saturate(2) hue-rotate(-10deg);
 }
 
 .save-the-date {
     font-family: 'Playfair Display SC', serif;
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: 400;
-    letter-spacing: 0.35em;
+    letter-spacing: 0.4em;
     text-transform: uppercase;
     color: var(--brown);
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 }
 
 .hero-logo.small {
