@@ -276,13 +276,13 @@ function initSplash() {
         path.style.strokeDashoffset = length;
     });
 
-    // After drawing completes (~3.5s), fade out
+    // After drawing completes (~3.2s), hold briefly, then fade out
     setTimeout(() => {
         splash.classList.add('fade-out');
         setTimeout(() => {
             splash.style.display = 'none';
         }, 1000);
-    }, 3500);
+    }, 3800);
 }
 
 // ========== INIT ==========
