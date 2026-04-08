@@ -96,8 +96,8 @@ body {
 .splash.fade-out { opacity: 0; pointer-events: none; }
 
 .splash-logo-container {
-    width: min(480px, 65vmin);
-    height: min(550px, 75vmin);
+    width: min(620px, 80vmin);
+    height: min(700px, 90vmin);
     position: relative;
     display: flex;
     align-items: center;
