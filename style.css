@@ -39,7 +39,7 @@ body {
     padding: 12px 40px;
 }
 .nav-logo img {
-    height: 50px;
+    height: 80px;
     width: auto;
     object-fit: contain;
 }
@@ -218,6 +218,32 @@ body {
     object-fit: cover;
 }
 
+/* Image placeholder when photo not yet uploaded */
+.split-image.placeholder .split-img { display: none; }
+.split-image.placeholder {
+    background-color: var(--ecru-dark);
+    position: relative;
+}
+.img-placeholder-text {
+    display: none;
+    position: absolute;
+    inset: 0;
+    align-items: center;
+    justify-content: center;
+    font-style: italic;
+    color: var(--brown-subtle);
+    font-size: 1.1rem;
+}
+.split-image.placeholder .img-placeholder-text {
+    display: flex;
+}
+.section-dark .split-image.placeholder {
+    background-color: var(--brown-dark);
+}
+.section-dark .img-placeholder-text {
+    color: var(--accent);
+}
+
 .split-content {
     padding: 70px 60px;
     display: flex;
@@ -293,11 +319,11 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 6px;
-    max-width: 900px;
+    max-width: 1100px;
     margin: 0 auto;
 }
 .info-card {
-    aspect-ratio: 1;
+    aspect-ratio: 16/9;
     position: relative;
     overflow: hidden;
     background-color: var(--brown-deep);
