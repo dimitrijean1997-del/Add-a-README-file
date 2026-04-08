@@ -105,16 +105,18 @@ body {
     animation: drawLine 2s ease-in-out forwards;
 }
 
-/* A left leg */
-.draw-path:nth-child(1) { animation-delay: 0s; animation-duration: 1.5s; }
+/* A swoosh + left leg */
+.draw-path:nth-child(1) { animation-delay: 0s; animation-duration: 2s; }
 /* A right leg */
-.draw-path:nth-child(2) { animation-delay: 0.5s; animation-duration: 1.5s; }
+.draw-path:nth-child(2) { animation-delay: 0.6s; animation-duration: 1.3s; }
 /* A crossbar */
-.draw-path:nth-child(3) { animation-delay: 1.1s; animation-duration: 0.8s; }
+.draw-path:nth-child(3) { animation-delay: 1.2s; animation-duration: 0.7s; }
 /* D large curve */
 .draw-path:nth-child(4) { animation-delay: 1.5s; animation-duration: 2s; }
 /* D vertical stem */
-.draw-path:nth-child(5) { animation-delay: 1.8s; animation-duration: 1.2s; }
+.draw-path:nth-child(5) { animation-delay: 1.8s; animation-duration: 1s; }
+/* D bottom serif */
+.draw-path:nth-child(6) { animation-delay: 2.5s; animation-duration: 0.4s; }
 
 @keyframes drawLine {
     to { stroke-dashoffset: 0; }
