@@ -81,7 +81,7 @@ body {
 .nav-links a:hover { color: var(--accent); }
 .nav-links a:hover::after { width: 100%; }
 
-/* ========== SPLASH - SVG DRAWING ANIMATION ========== */
+/* ========== SPLASH - LOGO REVEAL ANIMATION ========== */
 .splash {
     position: fixed;
     inset: 0;
@@ -94,32 +94,41 @@ body {
 }
 .splash.fade-out { opacity: 0; pointer-events: none; }
 
-.splash-svg {
-    width: min(400px, 60vmin);
-    height: min(450px, 70vmin);
+.splash-logo-container {
+    width: min(350px, 55vmin);
+    height: min(400px, 65vmin);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.draw-path {
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
-    animation: drawLine 2s ease-in-out forwards;
+.splash-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    animation: logoReveal 2.5s ease-out forwards;
 }
 
-/* A swoosh + left leg */
-.draw-path:nth-child(1) { animation-delay: 0s; animation-duration: 2s; }
-/* A right leg */
-.draw-path:nth-child(2) { animation-delay: 0.6s; animation-duration: 1.3s; }
-/* A crossbar */
-.draw-path:nth-child(3) { animation-delay: 1.2s; animation-duration: 0.7s; }
-/* D large curve */
-.draw-path:nth-child(4) { animation-delay: 1.5s; animation-duration: 2s; }
-/* D vertical stem */
-.draw-path:nth-child(5) { animation-delay: 1.8s; animation-duration: 1s; }
-/* D bottom serif */
-.draw-path:nth-child(6) { animation-delay: 2.5s; animation-duration: 0.4s; }
-
-@keyframes drawLine {
-    to { stroke-dashoffset: 0; }
+@keyframes logoReveal {
+    0% {
+        opacity: 0;
+        clip-path: inset(50% 50% 50% 50%);
+        transform: scale(0.9);
+    }
+    30% {
+        opacity: 1;
+        clip-path: inset(10% 20% 10% 20%);
+        transform: scale(0.95);
+    }
+    70% {
+        clip-path: inset(0% 0% 0% 0%);
+        transform: scale(1);
+    }
+    100% {
+        opacity: 1;
+        clip-path: inset(0% 0% 0% 0%);
+        transform: scale(1.02);
+    }
 }
 
 /* ========== PAGES ========== */
@@ -858,8 +867,8 @@ body {
     .guest-card-header { flex-direction: column; }
     .guest-card-actions { flex-wrap: wrap; }
 
-    .splash-svg {
-        width: min(280px, 70vmin);
-        height: min(320px, 80vmin);
+    .splash-logo-container {
+        width: min(250px, 60vmin);
+        height: min(300px, 70vmin);
     }
 }

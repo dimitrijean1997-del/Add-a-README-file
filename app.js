@@ -264,25 +264,16 @@ document.getElementById('btn-back-countdown').addEventListener('click', () => {
     showPage('page-welcome');
 });
 
-// ========== SPLASH SCREEN (SVG drawing animation) ==========
+// ========== SPLASH SCREEN ==========
 function initSplash() {
     const splash = document.getElementById('splash-screen');
-    const paths = document.querySelectorAll('.draw-path');
-
-    // Calculate actual path lengths and set correct dasharray
-    paths.forEach(path => {
-        const length = path.getTotalLength();
-        path.style.strokeDasharray = length;
-        path.style.strokeDashoffset = length;
-    });
-
-    // After drawing completes (~3.2s), hold briefly, then fade out
+    // Logo reveal animation runs for 2.5s, hold 0.5s, then fade out over 1s
     setTimeout(() => {
         splash.classList.add('fade-out');
         setTimeout(() => {
             splash.style.display = 'none';
         }, 1000);
-    }, 3800);
+    }, 3000);
 }
 
 // ========== INIT ==========
