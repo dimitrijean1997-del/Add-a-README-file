@@ -45,7 +45,7 @@ body {
     transform: translateY(-50%);
 }
 .nav-logo img {
-    height: 170px;
+    height: 210px;
     width: auto;
     object-fit: contain;
     transition: height 0.4s;
