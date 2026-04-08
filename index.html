@@ -18,13 +18,13 @@
     <!-- ========== PAGE PRINCIPALE ========== -->
     <div id="page-welcome" class="page active">
 
-        <!-- HERO -->
-        <header class="hero">
-            <img src="Marron BG.png" alt="A&D" class="hero-logo">
-            <p class="save-the-date">Save the Date</p>
-            <h1 class="couple-names">Alice & Dimitri</h1>
-            <p class="subtitle">célèbrent leur union</p>
-            <p class="wedding-date">04 Septembre 2027</p>
+        <!-- HERO : full-screen dark brown -->
+        <header class="hero-full">
+            <div class="hero-overlay">
+                <p class="hero-small-text">Un amour qui se célèbre</p>
+                <h1 class="hero-title">Alice <span class="hero-and">&</span> Dimitri</h1>
+                <p class="hero-date">04 . 09 . 2027</p>
+            </div>
         </header>
 
         <!-- COUNTDOWN BANNER -->
@@ -52,45 +52,102 @@
             </div>
         </div>
 
+        <!-- SECTION BIENVENUE -->
+        <section class="section-welcome">
+            <div class="split-layout">
+                <div class="split-image">
+                    <img src="Marron BG.png" alt="A&D" class="split-img">
+                </div>
+                <div class="split-content">
+                    <p class="script-label">Save the Date</p>
+                    <h2>Rejoignez-nous pour célébrer notre amour, notre joie et notre bonheur.</h2>
+                    <div class="separator"></div>
+                    <p class="body-text">Nous avons l'immense joie de vous convier à notre mariage. Ce jour si spécial ne serait pas le même sans vous. Nous avons hâte de partager ces moments inoubliables en votre compagnie.</p>
+                    <p class="body-text">Invitation à venir prochainement.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION NOTRE HISTOIRE (dark) -->
+        <section class="section-dark">
+            <div class="split-layout reverse">
+                <div class="split-content light-text">
+                    <p class="script-label light">Notre Histoire</p>
+                    <h2>Le début d'une belle aventure</h2>
+                    <div class="separator light"></div>
+                    <p class="body-text">Nous nous sommes rencontrés de la plus belle des façons et avons rapidement su que nous étions faits l'un pour l'autre. De nos premiers instants ensemble à aujourd'hui, notre histoire a été remplie de rires, d'amour et de bonheur.</p>
+                    <p class="body-text">Aujourd'hui, nous avons choisi de lier nos destins — et nous avons hâte de célébrer ce nouveau chapitre avec vous !</p>
+                </div>
+                <div class="split-image">
+                    <img src="logo-ad.png" alt="A&D" class="split-img">
+                </div>
+            </div>
+        </section>
+
         <!-- SECTION RSVP -->
         <section id="rsvp" class="section-rsvp">
-            <div class="rsvp-card">
-                <h2>Confirmer Votre Présence</h2>
+            <div class="rsvp-container">
+                <div class="rsvp-header">
+                    <h2 class="rsvp-title">RSVP</h2>
+                    <div class="rsvp-deadline">
+                        <span class="script-label">répondre avant le</span>
+                        <span class="rsvp-date">01.06.2027</span>
+                    </div>
+                </div>
                 <form id="rsvp-form">
                     <div class="form-group">
-                        <label for="guest-name">Nom</label>
-                        <input type="text" id="guest-name" required placeholder="Votre nom complet">
+                        <label for="guest-name">Votre nom complet *</label>
+                        <input type="text" id="guest-name" required>
                     </div>
                     <div class="form-group">
-                        <label for="guest-email">Email</label>
-                        <input type="email" id="guest-email" required placeholder="votre@email.com">
+                        <label for="guest-email">Votre email *</label>
+                        <input type="email" id="guest-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Serez-vous présent(e) ?</label>
+                        <div class="checkbox-group">
+                            <label class="check-label">
+                                <input type="radio" name="attending" value="yes" checked>
+                                <span class="checkmark"></span>
+                                <span>Oui</span>
+                            </label>
+                            <label class="check-label">
+                                <input type="radio" name="attending" value="no">
+                                <span class="checkmark"></span>
+                                <span>Non</span>
+                            </label>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Souhaitez-vous venir accompagné(e) ?</label>
-                        <div class="radio-group">
-                            <label class="radio-label">
-                                <input type="radio" name="plus-one" value="no" checked>
-                                <span>Non</span>
-                            </label>
-                            <label class="radio-label">
+                        <div class="checkbox-group">
+                            <label class="check-label">
                                 <input type="radio" name="plus-one" value="yes">
+                                <span class="checkmark"></span>
                                 <span>Oui</span>
+                            </label>
+                            <label class="check-label">
+                                <input type="radio" name="plus-one" value="no" checked>
+                                <span class="checkmark"></span>
+                                <span>Non</span>
                             </label>
                         </div>
                     </div>
                     <div class="form-group" id="companion-group" style="display:none;">
                         <label for="companion-name">Nom de votre accompagnant(e)</label>
-                        <input type="text" id="companion-name" placeholder="Prénom Nom">
+                        <input type="text" id="companion-name">
                     </div>
-                    <button type="submit" class="btn">Envoyer</button>
+                    <button type="submit" class="btn-submit">Confirmer</button>
                 </form>
             </div>
         </section>
 
         <!-- FOOTER -->
         <footer class="site-footer">
+            <p class="footer-thanks">Merci d'être à nos côtés pour ce jour si spécial.<br>Nous avons hâte de célébrer avec vous.</p>
+            <div class="footer-divider"></div>
+            <p class="footer-label">avec amour,</p>
             <p class="footer-names">Alice & Dimitri</p>
-            <p class="footer-date">04 Septembre 2027</p>
             <p class="admin-link">
                 <a href="#" id="show-admin">Accès administrateur</a>
             </p>
@@ -99,27 +156,24 @@
 
     <!-- ========== PAGE CONFIRMATION (en attente) ========== -->
     <div id="page-pending" class="page">
-        <header class="hero hero-small">
-            <img src="logo-ad-removebg-preview.png" alt="A&D" class="hero-logo small">
-            <h1 class="couple-names">Alice & Dimitri</h1>
+        <header class="hero-mini">
+            <img src="Marron BG.png" alt="A&D" class="hero-mini-logo">
+            <h1 class="hero-mini-names">Alice & Dimitri</h1>
         </header>
         <section class="message-section">
-            <div class="status-icon pending-icon">&#9202;</div>
+            <div class="status-icon">&#9202;</div>
             <h2>Merci pour votre inscription !</h2>
-            <p class="message-text">Votre demande a bien été enregistrée.<br>
-            Vous recevrez une confirmation prochainement.</p>
+            <p class="message-text">Votre demande a bien été enregistrée.<br>Vous recevrez une confirmation prochainement.</p>
             <p class="guest-info" id="pending-info"></p>
-            <button class="btn btn-secondary" id="btn-back-home">Retour</button>
+            <button class="btn-outline" id="btn-back-home">Retour</button>
         </section>
     </div>
 
     <!-- ========== PAGE COUNTDOWN (validé) ========== -->
     <div id="page-countdown" class="page">
-        <header class="hero">
-            <img src="logo-ad-removebg-preview.png" alt="A&D" class="hero-logo">
-            <h1 class="couple-names">Alice & Dimitri</h1>
-            <p class="subtitle">célèbrent leur union</p>
-            <p class="wedding-date">04 Septembre 2027</p>
+        <header class="hero-mini">
+            <img src="Marron BG.png" alt="A&D" class="hero-mini-logo">
+            <h1 class="hero-mini-names">Alice & Dimitri</h1>
         </header>
         <section class="countdown-section">
             <h2>Le grand jour approche</h2>
@@ -147,25 +201,24 @@
 
     <!-- ========== PAGE REFUSÉ ========== -->
     <div id="page-refused" class="page">
-        <header class="hero hero-small">
-            <img src="logo-ad-removebg-preview.png" alt="A&D" class="hero-logo small">
-            <h1 class="couple-names">Alice & Dimitri</h1>
+        <header class="hero-mini">
+            <img src="Marron BG.png" alt="A&D" class="hero-mini-logo">
+            <h1 class="hero-mini-names">Alice & Dimitri</h1>
         </header>
         <section class="message-section">
-            <div class="status-icon refused-icon">&#10005;</div>
+            <div class="status-icon refused">&#10005;</div>
             <h2>Inscription non validée</h2>
-            <p class="message-text">Nous sommes désolés, votre accompagnant(e) n'a pas pu être accepté(e).<br>
-            Vous êtes néanmoins le/la bienvenu(e) au mariage !</p>
-            <button class="btn" id="btn-back-countdown">Voir le compte à rebours</button>
+            <p class="message-text">Nous sommes désolés, votre accompagnant(e) n'a pas pu être accepté(e).<br>Vous êtes néanmoins le/la bienvenu(e) au mariage !</p>
+            <button class="btn-submit" id="btn-back-countdown">Voir le compte à rebours</button>
         </section>
     </div>
 
     <!-- ========== PAGE ADMIN ========== -->
     <div id="page-admin-login" class="page">
-        <header class="hero hero-small">
-            <img src="logo-ad-removebg-preview.png" alt="A&D" class="hero-logo small">
-            <h1 class="couple-names">Alice & Dimitri</h1>
-            <p class="subtitle">Administration</p>
+        <header class="hero-mini">
+            <img src="Marron BG.png" alt="A&D" class="hero-mini-logo">
+            <h1 class="hero-mini-names">Alice & Dimitri</h1>
+            <p class="hero-mini-sub">Administration</p>
         </header>
         <section class="admin-login-section">
             <form id="admin-login-form">
@@ -173,17 +226,17 @@
                     <label for="admin-password">Mot de passe administrateur</label>
                     <input type="password" id="admin-password" required placeholder="Mot de passe">
                 </div>
-                <button type="submit" class="btn">Connexion</button>
+                <button type="submit" class="btn-submit">Connexion</button>
             </form>
-            <button class="btn btn-secondary" id="btn-admin-back">Retour</button>
+            <button class="btn-outline" id="btn-admin-back">Retour</button>
         </section>
     </div>
 
     <div id="page-admin" class="page">
-        <header class="hero hero-small">
-            <img src="logo-ad-removebg-preview.png" alt="A&D" class="hero-logo small">
-            <h1 class="couple-names">Alice & Dimitri</h1>
-            <p class="subtitle">Gestion des invités</p>
+        <header class="hero-mini">
+            <img src="Marron BG.png" alt="A&D" class="hero-mini-logo">
+            <h1 class="hero-mini-names">Alice & Dimitri</h1>
+            <p class="hero-mini-sub">Gestion des invités</p>
         </header>
         <section class="admin-section">
             <div class="admin-tabs">
@@ -192,7 +245,7 @@
                 <button class="tab-btn" data-tab="refused">Refusés</button>
             </div>
             <div class="guest-list" id="guest-list"></div>
-            <button class="btn btn-secondary" id="btn-admin-logout">Déconnexion</button>
+            <button class="btn-outline" id="btn-admin-logout">Déconnexion</button>
         </section>
     </div>
 
