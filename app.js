@@ -264,16 +264,46 @@ document.getElementById('btn-back-countdown').addEventListener('click', () => {
     showPage('page-welcome');
 });
 
-// ========== SPLASH SCREEN ==========
+// ========== SPLASH SCREEN (Airelles-style drawing reveal) ==========
 function initSplash() {
     const splash = document.getElementById('splash-screen');
-    // Logo reveal animation runs for 2.5s, hold 0.5s, then fade out over 1s
-    setTimeout(() => {
-        splash.classList.add('fade-out');
-        setTimeout(() => {
-            splash.style.display = 'none';
-        }, 1000);
-    }, 3000);
+    const logo = document.getElementById('splash-logo');
+
+    const duration = 2800; // ms for drawing
+    const startTime = performance.now();
+
+    function animateDraw(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        // Eased progress (ease-in-out)
+        const eased = progress < 0.5
+            ? 2 * progress * progress
+            : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+
+        // Reveal percentage (0 to 100)
+        const reveal = eased * 100;
+        // Soft brush edge width
+        const edge = 12;
+
+        const maskValue = `linear-gradient(to bottom, #000 0%, #000 ${reveal}%, transparent ${reveal + edge}%, transparent 100%)`;
+        logo.style.webkitMaskImage = maskValue;
+        logo.style.maskImage = maskValue;
+
+        if (progress < 1) {
+            requestAnimationFrame(animateDraw);
+        } else {
+            // Drawing complete — hold then fade out
+            setTimeout(() => {
+                splash.classList.add('fade-out');
+                setTimeout(() => {
+                    splash.style.display = 'none';
+                }, 1000);
+            }, 600);
+        }
+    }
+
+    requestAnimationFrame(animateDraw);
 }
 
 // ========== INIT ==========
