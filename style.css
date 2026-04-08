@@ -29,17 +29,23 @@ body {
     z-index: 100;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 20px 40px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, padding 0.3s;
 }
 .navbar.scrolled {
     background-color: rgba(44, 29, 19, 0.95);
     backdrop-filter: blur(8px);
     padding: 12px 40px;
 }
+.nav-logo {
+    position: absolute;
+    left: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+}
 .nav-logo img {
-    height: 80px;
+    height: 100px;
     width: auto;
     object-fit: contain;
 }
@@ -106,12 +112,28 @@ body {
 .hero-full {
     width: 100%;
     min-height: 100vh;
-    background-color: var(--brown-deep);
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: hidden;
+}
+
+.hero-bg-image {
+    position: absolute;
+    inset: 0;
+    background-image: url('domaine_de_beauregard-removebg-preview.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+.hero-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(44, 29, 19, 0.75);
+    z-index: 1;
 }
 
 .hero-overlay {
@@ -120,31 +142,46 @@ body {
     z-index: 2;
 }
 
+.hero-ad-logo {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    margin-bottom: 30px;
+    filter: brightness(1.2);
+}
+
 .hero-small-text {
     font-size: 1rem;
     font-weight: 400;
-    letter-spacing: 0.3em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
+    color: var(--ecru-dark);
+    margin-bottom: 20px;
+}
+
+.hero-venue {
+    margin-top: 10px;
+    margin-bottom: 0;
+    letter-spacing: 0.3em;
     color: var(--accent);
-    margin-bottom: 30px;
 }
 
 .hero-title {
-    font-family: 'Playfair Display SC', serif;
-    font-size: 5rem;
+    font-family: 'Mrs Saint Delafield', cursive;
+    font-size: 7rem;
     font-weight: 400;
     color: var(--ecru);
-    letter-spacing: 0.08em;
+    letter-spacing: 0.02em;
     line-height: 1.1;
     margin-bottom: 15px;
 }
 
 .hero-and {
     font-family: 'Mrs Saint Delafield', cursive;
-    font-size: 6rem;
+    font-size: 7rem;
     display: inline-block;
-    transform: translateY(5px);
-    color: var(--accent);
+    transform: translateY(0);
+    color: var(--ecru);
 }
 
 .hero-date {
@@ -158,10 +195,17 @@ body {
 /* ========== COUNTDOWN BANNER ========== */
 .countdown-banner {
     width: 100%;
-    padding: 35px 20px;
+    padding: 50px 20px;
     border-top: 2px solid var(--brown);
     border-bottom: 2px solid var(--brown);
     background-color: var(--ecru);
+    text-align: center;
+}
+.save-the-date-label {
+    font-family: 'Mrs Saint Delafield', cursive;
+    font-size: 3rem;
+    color: var(--brown);
+    margin-bottom: 25px;
 }
 .countdown-inline {
     display: flex;
@@ -740,13 +784,15 @@ body {
 /* ========== RESPONSIVE ========== */
 @media (max-width: 768px) {
     .navbar { padding: 12px 20px; }
-    .nav-logo img { height: 35px; }
-    .nav-links { gap: 15px; }
-    .nav-links a { font-size: 0.7rem; letter-spacing: 0.08em; }
+    .nav-logo { left: 20px; }
+    .nav-logo img { height: 50px; }
+    .nav-links { gap: 12px; }
+    .nav-links a { font-size: 0.65rem; letter-spacing: 0.08em; }
 
-    .hero-title { font-size: 3rem; }
+    .hero-title { font-size: 3.5rem; }
     .hero-and { font-size: 3.5rem; }
-    .hero-small-text { font-size: 0.85rem; }
+    .hero-small-text { font-size: 0.75rem; }
+    .hero-ad-logo { width: 120px; height: 120px; }
 
     .info-grid { grid-template-columns: 1fr; }
     .section-informations { padding: 50px 20px; }
@@ -763,6 +809,7 @@ body {
     .countdown-inline { gap: 15px; }
     .countdown-inline-number { font-size: 2rem; }
     .countdown-inline-item { min-width: 65px; }
+    .save-the-date-label { font-size: 2rem; }
 
     .rsvp-header { flex-direction: column; gap: 15px; }
 

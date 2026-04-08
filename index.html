@@ -18,52 +18,30 @@
     <!-- ========== PAGE PRINCIPALE ========== -->
     <div id="page-welcome" class="page active">
 
-        <!-- NAVBAR -->
-        <nav class="navbar">
-            <a href="#" class="nav-logo">
-                <img src="Logo_Beige-removebg-preview.png" alt="A&D">
-            </a>
-            <div class="nav-links">
-                <a href="#histoire">Notre Histoire</a>
-                <a href="#informations">Informations</a>
-                <a href="#save-the-date">Save the Date</a>
-                <a href="#rsvp">RSVP</a>
-            </div>
-        </nav>
-
-        <!-- HERO : full-screen dark brown -->
+        <!-- HERO with venue background + navbar integrated -->
         <header class="hero-full">
+            <div class="hero-bg-image"></div>
+            <div class="hero-bg-overlay"></div>
+            <!-- NAVBAR inside hero -->
+            <nav class="navbar">
+                <a href="#" class="nav-logo">
+                    <img src="Logo_Beige-removebg-preview.png" alt="A&D">
+                </a>
+                <div class="nav-links">
+                    <a href="#histoire">Notre Histoire</a>
+                    <a href="#informations">Informations</a>
+                    <a href="#save-the-date">Save the Date</a>
+                    <a href="#rsvp">RSVP</a>
+                </div>
+            </nav>
             <div class="hero-overlay">
-                <p class="hero-small-text">Un amour qui se célèbre</p>
+                <img src="Marron BG.png" alt="A&D" class="hero-ad-logo">
+                <p class="hero-small-text">Nous avons le plaisir de vous inviter au mariage de</p>
                 <h1 class="hero-title">Alice <span class="hero-and">&</span> Dimitri</h1>
                 <p class="hero-date">04 . 09 . 2027</p>
+                <p class="hero-small-text hero-venue">Domaine de Beauregard</p>
             </div>
         </header>
-
-        <!-- COUNTDOWN BANNER -->
-        <div id="save-the-date" class="countdown-banner">
-            <div class="countdown-inline" id="countdown-inline">
-                <div class="countdown-inline-item">
-                    <span class="countdown-inline-number" id="days-inline">000</span>
-                    <span class="countdown-inline-label">Jours</span>
-                </div>
-                <span class="countdown-inline-sep"></span>
-                <div class="countdown-inline-item">
-                    <span class="countdown-inline-number" id="hours-inline">00</span>
-                    <span class="countdown-inline-label">Heures</span>
-                </div>
-                <span class="countdown-inline-sep"></span>
-                <div class="countdown-inline-item">
-                    <span class="countdown-inline-number" id="minutes-inline">00</span>
-                    <span class="countdown-inline-label">Minutes</span>
-                </div>
-                <span class="countdown-inline-sep"></span>
-                <div class="countdown-inline-item">
-                    <span class="countdown-inline-number" id="seconds-inline">00</span>
-                    <span class="countdown-inline-label">Secondes</span>
-                </div>
-            </div>
-        </div>
 
         <!-- SECTION NOTRE RENCONTRE -->
         <section id="histoire" class="section-welcome">
@@ -101,7 +79,6 @@
 
         <!-- SECTION INFORMATIONS -->
         <section id="informations" class="section-informations">
-            <p class="section-overline">Les détails</p>
             <h2 class="section-title">Informations</h2>
             <div class="info-grid">
                 <a href="#" class="info-card">
@@ -135,6 +112,32 @@
             </div>
         </section>
 
+        <!-- SAVE THE DATE + COUNTDOWN BANNER -->
+        <div id="save-the-date" class="countdown-banner">
+            <p class="save-the-date-label">Save the Date</p>
+            <div class="countdown-inline" id="countdown-inline">
+                <div class="countdown-inline-item">
+                    <span class="countdown-inline-number" id="days-inline">000</span>
+                    <span class="countdown-inline-label">Jours</span>
+                </div>
+                <span class="countdown-inline-sep"></span>
+                <div class="countdown-inline-item">
+                    <span class="countdown-inline-number" id="hours-inline">00</span>
+                    <span class="countdown-inline-label">Heures</span>
+                </div>
+                <span class="countdown-inline-sep"></span>
+                <div class="countdown-inline-item">
+                    <span class="countdown-inline-number" id="minutes-inline">00</span>
+                    <span class="countdown-inline-label">Minutes</span>
+                </div>
+                <span class="countdown-inline-sep"></span>
+                <div class="countdown-inline-item">
+                    <span class="countdown-inline-number" id="seconds-inline">00</span>
+                    <span class="countdown-inline-label">Secondes</span>
+                </div>
+            </div>
+        </div>
+
         <!-- SECTION RSVP -->
         <section id="rsvp" class="section-rsvp">
             <div class="rsvp-container">
@@ -142,7 +145,7 @@
                     <h2 class="rsvp-title">RSVP</h2>
                     <div class="rsvp-deadline">
                         <span class="script-label">répondre avant le</span>
-                        <span class="rsvp-date">01.06.2027</span>
+                        <span class="rsvp-date">01.09.2027</span>
                     </div>
                 </div>
                 <form id="rsvp-form">
@@ -168,25 +171,6 @@
                                 <span>Non</span>
                             </label>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Souhaitez-vous venir accompagné(e) ?</label>
-                        <div class="checkbox-group">
-                            <label class="check-label">
-                                <input type="radio" name="plus-one" value="yes">
-                                <span class="checkmark"></span>
-                                <span>Oui</span>
-                            </label>
-                            <label class="check-label">
-                                <input type="radio" name="plus-one" value="no" checked>
-                                <span class="checkmark"></span>
-                                <span>Non</span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="form-group" id="companion-group" style="display:none;">
-                        <label for="companion-name">Nom de votre accompagnant(e)</label>
-                        <input type="text" id="companion-name">
                     </div>
                     <button type="submit" class="btn-submit">Confirmer</button>
                 </form>

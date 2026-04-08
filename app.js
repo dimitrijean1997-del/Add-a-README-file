@@ -42,40 +42,20 @@ function showPage(pageId) {
 
 // ========== RSVP FORM ==========
 const rsvpForm = document.getElementById('rsvp-form');
-const plusOneRadios = document.querySelectorAll('input[name="plus-one"]');
-const companionGroup = document.getElementById('companion-group');
-
-plusOneRadios.forEach(radio => {
-    radio.addEventListener('change', () => {
-        const wantsPlusOne = document.querySelector('input[name="plus-one"]:checked').value === 'yes';
-        companionGroup.style.display = wantsPlusOne ? 'block' : 'none';
-        if (wantsPlusOne) {
-            document.getElementById('companion-name').required = true;
-        } else {
-            document.getElementById('companion-name').required = false;
-            document.getElementById('companion-name').value = '';
-        }
-    });
-});
 
 rsvpForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const name = document.getElementById('guest-name').value.trim();
     const email = document.getElementById('guest-email').value.trim();
-    const wantsPlusOne = document.querySelector('input[name="plus-one"]:checked').value === 'yes';
-    const companionName = document.getElementById('companion-name').value.trim();
 
     if (!name || !email) return;
-    if (wantsPlusOne && !companionName) return;
 
     const guest = {
         id: Date.now().toString(),
         name,
         email,
-        wantsPlusOne,
-        companionName: wantsPlusOne ? companionName : '',
-        status: 'pending', // pending, accepted, refused
+        status: 'pending',
         createdAt: new Date().toISOString()
     };
 
@@ -92,16 +72,11 @@ rsvpForm.addEventListener('submit', (e) => {
 
     // Reset form
     rsvpForm.reset();
-    companionGroup.style.display = 'none';
 });
 
 function showPendingPage(guest) {
     const info = document.getElementById('pending-info');
-    let text = `Inscrit(e) : ${guest.name}`;
-    if (guest.wantsPlusOne) {
-        text += `<br>Accompagné(e) de : ${guest.companionName}`;
-    }
-    info.innerHTML = text;
+    info.innerHTML = `Inscrit(e) : ${guest.name}`;
     showPage('page-pending');
 }
 
@@ -238,11 +213,7 @@ function renderGuestList(filter) {
                     </span>
                 ` : ''}
             </div>
-            ${guest.wantsPlusOne ? `
-                <div class="guest-card-companion">
-                    Accompagné(e) de : <strong>${escapeHtml(guest.companionName)}</strong>
-                </div>
-            ` : '<div class="guest-card-companion">Vient seul(e)</div>'}
+            <div class="guest-card-companion">Inscrit(e) le ${new Date(guest.createdAt).toLocaleDateString('fr-FR')}</div>
             ${filter === 'pending' ? `
                 <div class="guest-card-actions">
                     <button class="btn btn-accept" onclick="updateGuestStatus('${guest.id}', 'accepted')">Accepter</button>
