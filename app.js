@@ -269,7 +269,7 @@ function initSplash() {
     const splash = document.getElementById('splash-screen');
     const logo = document.getElementById('splash-logo');
 
-    const duration = 3500; // ms for drawing
+    const duration = 5500; // ms for drawing
     const startTime = performance.now();
 
     function animateDraw(now) {
