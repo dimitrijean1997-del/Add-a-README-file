@@ -2,6 +2,14 @@
 const WEDDING_DATE = new Date('2027-09-04T14:00:00');
 const ADMIN_PASSWORD = 'alice&dimitri2027';
 
+// ========== NAVBAR SCROLL ==========
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    if (navbar) {
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
+    }
+});
+
 // ========== DATA STORE (localStorage) ==========
 function getGuests() {
     return JSON.parse(localStorage.getItem('wedding_guests') || '[]');
