@@ -45,10 +45,11 @@ body {
     transform: translateY(-50%);
 }
 .nav-logo img {
-    height: 130px;
+    height: 170px;
     width: auto;
     object-fit: contain;
     transition: height 0.4s;
+    filter: none;
 }
 .navbar.scrolled .nav-logo img {
     height: 60px;
