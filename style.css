@@ -15,7 +15,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-    font-family: 'Playfair Display', 'Georgia', serif;
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
     background-color: var(--ecru);
     color: var(--brown-dark);
 }
@@ -30,33 +30,38 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px 40px;
-    transition: background-color 0.3s, padding 0.3s;
+    padding: 25px 50px;
+    transition: background-color 0.4s, padding 0.4s;
 }
 .navbar.scrolled {
     background-color: rgba(44, 29, 19, 0.95);
     backdrop-filter: blur(8px);
-    padding: 12px 40px;
+    padding: 12px 50px;
 }
 .nav-logo {
     position: absolute;
-    left: 40px;
+    left: 50px;
     top: 50%;
     transform: translateY(-50%);
 }
 .nav-logo img {
-    height: 100px;
+    height: 130px;
     width: auto;
     object-fit: contain;
+    transition: height 0.4s;
+}
+.navbar.scrolled .nav-logo img {
+    height: 60px;
 }
 .nav-links {
     display: flex;
-    gap: 35px;
+    gap: 45px;
 }
 .nav-links a {
-    font-family: 'Playfair Display SC', serif;
-    font-size: 0.85rem;
-    letter-spacing: 0.15em;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--ecru-dark);
     text-decoration: none;
@@ -76,7 +81,7 @@ body {
 .nav-links a:hover { color: var(--accent); }
 .nav-links a:hover::after { width: 100%; }
 
-/* ========== SPLASH ========== */
+/* ========== SPLASH - SVG DRAWING ANIMATION ========== */
 .splash {
     position: fixed;
     inset: 0;
@@ -85,24 +90,33 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    transition: opacity 0.8s ease-out;
+    transition: opacity 1s ease-out;
 }
 .splash.fade-out { opacity: 0; pointer-events: none; }
-.splash-logo {
-    width: min(700px, 80vmin);
-    height: min(700px, 80vmin);
-    object-fit: contain;
-    animation: logoReveal 2s ease-out forwards;
+
+.splash-svg {
+    width: min(400px, 60vmin);
+    height: min(450px, 70vmin);
 }
-@keyframes logoReveal {
-    0% { opacity: 0; transform: scale(0.8); }
-    40% { opacity: 1; transform: scale(1); }
-    100% { opacity: 1; transform: scale(1.03); }
+
+.draw-path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: drawLine 2.5s ease-in-out forwards;
+}
+
+.draw-path:nth-child(1) { animation-delay: 0s; }
+.draw-path:nth-child(2) { animation-delay: 0.6s; }
+.draw-path:nth-child(3) { animation-delay: 1.0s; }
+.draw-path:nth-child(4) { animation-delay: 1.4s; }
+
+@keyframes drawLine {
+    to { stroke-dashoffset: 0; }
 }
 
 /* ========== PAGES ========== */
 .page { display: none; }
-.page.active { display: block; animation: fadeIn 0.6s ease; }
+.page.active { display: block; animation: fadeIn 0.8s ease; }
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -132,7 +146,7 @@ body {
 .hero-bg-overlay {
     position: absolute;
     inset: 0;
-    background-color: rgba(44, 29, 19, 0.75);
+    background-color: rgba(44, 29, 19, 0.72);
     z-index: 1;
 }
 
@@ -142,34 +156,29 @@ body {
     z-index: 2;
 }
 
-.hero-ad-logo {
-    width: 180px;
-    height: 180px;
-    object-fit: contain;
-    margin-bottom: 30px;
-    filter: brightness(1.2);
-}
-
 .hero-small-text {
-    font-size: 1rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
     font-weight: 400;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--ecru-dark);
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .hero-venue {
-    margin-top: 10px;
+    margin-top: 15px;
     margin-bottom: 0;
     letter-spacing: 0.3em;
     color: var(--accent);
+    font-style: italic;
 }
 
 .hero-title {
-    font-family: 'Mrs Saint Delafield', cursive;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 7rem;
-    font-weight: 400;
+    font-weight: 300;
+    font-style: italic;
     color: var(--ecru);
     letter-spacing: 0.02em;
     line-height: 1.1;
@@ -177,122 +186,77 @@ body {
 }
 
 .hero-and {
-    font-family: 'Mrs Saint Delafield', cursive;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 7rem;
+    font-weight: 300;
+    font-style: italic;
     display: inline-block;
-    transform: translateY(0);
     color: var(--ecru);
 }
 
 .hero-date {
-    font-family: 'Playfair Display SC', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 1.4rem;
-    letter-spacing: 0.4em;
-    color: var(--ecru-dark);
-    margin-top: 25px;
-}
-
-/* ========== COUNTDOWN BANNER ========== */
-.countdown-banner {
-    width: 100%;
-    padding: 50px 20px;
-    border-top: 2px solid var(--brown);
-    border-bottom: 2px solid var(--brown);
-    background-color: var(--ecru);
-    text-align: center;
-}
-.save-the-date-label {
-    font-family: 'Mrs Saint Delafield', cursive;
-    font-size: 3rem;
-    color: var(--brown);
-    margin-bottom: 25px;
-}
-.countdown-inline {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 35px;
-}
-.countdown-inline-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 90px;
-}
-.countdown-inline-number {
-    font-family: 'Playfair Display SC', serif;
-    font-size: 3rem;
     font-weight: 400;
-    color: var(--brown-dark);
-    line-height: 1;
-}
-.countdown-inline-label {
-    font-size: 0.85rem;
-    color: var(--brown-subtle);
-    margin-top: 6px;
+    letter-spacing: 0.5em;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
-}
-.countdown-inline-sep {
-    width: 1px;
-    height: 45px;
-    background-color: var(--brown-subtle);
-    opacity: 0.3;
+    color: var(--ecru-dark);
+    margin-top: 30px;
 }
 
-/* ========== SPLIT LAYOUT ========== */
-.split-layout {
+/* ========== SECTION NOTRE HISTOIRE - Airelles style ========== */
+.section-histoire {
+    background-color: var(--ecru);
+    padding: 100px 0 60px;
+}
+
+.histoire-header {
+    text-align: center;
+    padding: 0 40px 80px;
+}
+
+.histoire-block {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 550px;
+    grid-template-columns: 55% 45%;
+    max-width: 1200px;
+    margin: 0 auto 100px;
+    gap: 0;
+    align-items: start;
 }
-.split-layout.reverse { direction: rtl; }
-.split-layout.reverse > * { direction: ltr; }
 
-.split-image {
+.histoire-block.reverse {
+    grid-template-columns: 45% 55%;
+}
+
+.histoire-image {
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--ecru-dark);
 }
-.split-img {
+.histoire-image img {
     width: 100%;
-    height: 100%;
+    height: 500px;
     object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+.histoire-image:hover img {
+    transform: scale(1.03);
 }
 
-/* Image placeholder when photo not yet uploaded */
-.split-image.placeholder .split-img { display: none; }
-.split-image.placeholder {
-    background-color: var(--ecru-dark);
-    position: relative;
-}
-.img-placeholder-text {
-    display: none;
-    position: absolute;
-    inset: 0;
-    align-items: center;
-    justify-content: center;
-    font-style: italic;
-    color: var(--brown-subtle);
-    font-size: 1.1rem;
-}
-.split-image.placeholder .img-placeholder-text {
-    display: flex;
-}
-.section-dark .split-image.placeholder {
-    background-color: var(--brown-dark);
-}
-.section-dark .img-placeholder-text {
-    color: var(--accent);
-}
-
-.split-content {
-    padding: 70px 60px;
+.histoire-text {
+    padding: 60px 70px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.histoire-text h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.3;
+    color: var(--brown-dark);
+    margin-bottom: 25px;
 }
 
 .script-label {
@@ -303,115 +267,152 @@ body {
 }
 .script-label.light { color: var(--accent); }
 
-.split-content h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    font-weight: 500;
-    line-height: 1.3;
-    color: var(--brown-dark);
-    margin-bottom: 20px;
-}
-
 .separator {
     width: 60px;
-    height: 2px;
+    height: 1.5px;
     background-color: var(--brown);
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 }
 .separator.light { background-color: var(--accent); }
 
 .body-text {
-    font-size: 1.05rem;
-    line-height: 1.8;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    line-height: 1.9;
     color: var(--brown-light);
-    margin-bottom: 15px;
+    margin-bottom: 18px;
 }
 
-/* ========== SECTION WELCOME ========== */
-.section-welcome {
-    background-color: var(--ecru);
+/* ========== SECTION TITLE (shared) ========== */
+.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brown-dark);
+    margin-bottom: 60px;
 }
 
-/* ========== SECTION DARK ========== */
-.section-dark {
-    background-color: var(--brown-deep);
-}
-.section-dark h2 { color: var(--ecru); }
-.section-dark .body-text { color: var(--ecru-dark); opacity: 0.85; }
-
-/* ========== SECTION INFORMATIONS ========== */
+/* ========== SECTION INFORMATIONS - 4 cards side by side expand ========== */
 .section-informations {
-    padding: 80px 40px;
+    padding: 100px 20px;
     background-color: var(--ecru);
     text-align: center;
 }
-.section-overline {
-    font-family: 'Mrs Saint Delafield', cursive;
-    font-size: 1.8rem;
-    color: var(--brown);
-    margin-bottom: 5px;
-}
-.section-title {
-    font-family: 'Playfair Display SC', serif;
-    font-size: 2.5rem;
-    font-weight: 400;
-    letter-spacing: 0.1em;
-    color: var(--brown-dark);
-    margin-bottom: 50px;
-}
-.info-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6px;
-    max-width: 1100px;
+
+.info-gallery {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 450px;
+    max-width: 1200px;
     margin: 0 auto;
 }
-.info-card {
-    aspect-ratio: 16/9;
+
+.info-gallery-item {
     position: relative;
+    flex: 1;
+    height: 100%;
     overflow: hidden;
-    background-color: var(--brown-deep);
-    text-decoration: none;
     cursor: pointer;
+    transition: flex 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: var(--brown-deep);
 }
-.info-card-overlay {
+.info-gallery-item:hover {
+    flex: 3;
+}
+
+.info-gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.6s ease;
+}
+.info-gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.info-gallery-overlay {
     position: absolute;
     inset: 0;
     display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 30px 15px;
+    background: linear-gradient(to top, rgba(44, 29, 19, 0.85) 0%, rgba(44, 29, 19, 0.2) 50%, transparent 100%);
+    transition: background 0.4s;
+}
+
+.info-gallery-overlay h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ecru);
+    text-align: center;
+    transition: font-size 0.4s;
+}
+.info-gallery-item:hover .info-gallery-overlay h3 {
+    font-size: 1.5rem;
+}
+
+/* ========== COUNTDOWN BANNER ========== */
+.countdown-banner {
+    width: 100%;
+    padding: 60px 20px;
+    border-top: 1.5px solid var(--brown);
+    border-bottom: 1.5px solid var(--brown);
+    background-color: var(--ecru);
+    text-align: center;
+}
+.save-the-date-label {
+    font-family: 'Mrs Saint Delafield', cursive;
+    font-size: 3.2rem;
+    color: var(--brown);
+    margin-bottom: 30px;
+}
+.countdown-inline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+.countdown-inline-item {
+    display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 30px;
-    background-color: rgba(44, 29, 19, 0.85);
-    transition: background-color 0.4s;
+    min-width: 100px;
 }
-.info-card:hover .info-card-overlay {
-    background-color: rgba(44, 29, 19, 0.7);
+.countdown-inline-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--brown-dark);
+    line-height: 1;
 }
-.info-card-icon {
-    font-size: 2.5rem;
-    margin-bottom: 18px;
-    color: var(--accent);
-    opacity: 0.8;
+.countdown-inline-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--brown-subtle);
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
 }
-.info-card-overlay h3 {
-    font-family: 'Playfair Display SC', serif;
-    font-size: 1.5rem;
-    font-weight: 400;
-    letter-spacing: 0.12em;
-    color: var(--ecru);
-    margin-bottom: 10px;
-}
-.info-card-overlay p {
-    font-size: 0.95rem;
-    color: var(--ecru-dark);
-    opacity: 0.8;
-    font-style: italic;
+.countdown-inline-sep {
+    width: 1px;
+    height: 50px;
+    background-color: var(--brown-subtle);
+    opacity: 0.3;
 }
 
 /* ========== SECTION RSVP ========== */
 .section-rsvp {
-    padding: 80px 30px;
+    padding: 100px 30px;
     background-color: var(--ecru);
 }
 
@@ -424,16 +425,17 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     padding-bottom: 20px;
     border-bottom: 1px solid var(--brown);
 }
 
 .rsvp-title {
-    font-family: 'Playfair Display SC', serif;
-    font-size: 2.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
     font-weight: 400;
     letter-spacing: 0.15em;
+    text-transform: uppercase;
     color: var(--brown-dark);
 }
 
@@ -446,19 +448,21 @@ body {
     margin-bottom: 2px;
 }
 .rsvp-date {
-    font-family: 'Playfair Display SC', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 1.1rem;
-    letter-spacing: 0.08em;
+    font-weight: 500;
+    letter-spacing: 0.1em;
     color: var(--brown-dark);
 }
 
 /* ========== FORM ========== */
 .form-group {
-    margin-bottom: 28px;
+    margin-bottom: 32px;
 }
 .form-group label {
     display: block;
-    font-size: 1rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
     font-weight: 500;
     color: var(--brown);
     margin-bottom: 10px;
@@ -468,8 +472,8 @@ body {
 .form-group input[type="password"] {
     width: 100%;
     padding: 14px 0;
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
     border: none;
     border-bottom: 1px solid var(--brown-subtle);
     background: transparent;
@@ -492,13 +496,13 @@ body {
     align-items: center;
     gap: 10px;
     cursor: pointer;
-    font-size: 1.05rem;
+    font-size: 1.1rem;
 }
 .check-label input { display: none; }
 .checkmark {
     width: 20px;
     height: 20px;
-    border: 2px solid var(--brown);
+    border: 1.5px solid var(--brown);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -509,7 +513,7 @@ body {
     border-color: var(--brown-dark);
 }
 .check-label input:checked + .checkmark::after {
-    content: '✓';
+    content: '\2713';
     color: var(--ecru);
     font-size: 0.85rem;
 }
@@ -517,17 +521,18 @@ body {
 /* ========== BUTTONS ========== */
 .btn-submit {
     display: inline-block;
-    padding: 15px 50px;
-    font-family: 'Playfair Display SC', serif;
+    padding: 16px 55px;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 1rem;
-    letter-spacing: 0.15em;
+    font-weight: 600;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--ecru);
     background-color: var(--brown-dark);
-    border: 2px solid var(--brown-dark);
+    border: 1.5px solid var(--brown-dark);
     cursor: pointer;
     transition: all 0.3s;
-    margin-top: 15px;
+    margin-top: 20px;
 }
 .btn-submit:hover {
     background-color: var(--brown-deep);
@@ -537,13 +542,14 @@ body {
 .btn-outline {
     display: inline-block;
     padding: 14px 45px;
-    font-family: 'Playfair Display SC', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 0.95rem;
-    letter-spacing: 0.12em;
+    font-weight: 600;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--brown-dark);
     background: transparent;
-    border: 2px solid var(--brown);
+    border: 1.5px solid var(--brown);
     cursor: pointer;
     transition: all 0.3s;
     margin-top: 15px;
@@ -555,15 +561,15 @@ body {
 
 /* Admin compat */
 .btn-accept {
-    background-color: #6B8F5E; border: 2px solid #6B8F5E; color: var(--white);
-    padding: 8px 18px; font-family: 'Playfair Display SC', serif;
-    font-size: 0.85rem; cursor: pointer; letter-spacing: 0.05em;
+    background-color: #6B8F5E; border: 1.5px solid #6B8F5E; color: var(--white);
+    padding: 8px 18px; font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem; font-weight: 600; cursor: pointer; letter-spacing: 0.05em;
 }
 .btn-accept:hover { background-color: #5A7A4F; border-color: #5A7A4F; }
 .btn-refuse {
-    background-color: #A05050; border: 2px solid #A05050; color: var(--white);
-    padding: 8px 18px; font-family: 'Playfair Display SC', serif;
-    font-size: 0.85rem; cursor: pointer; letter-spacing: 0.05em;
+    background-color: #A05050; border: 1.5px solid #A05050; color: var(--white);
+    padding: 8px 18px; font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem; font-weight: 600; cursor: pointer; letter-spacing: 0.05em;
 }
 .btn-refuse:hover { background-color: #8B3E3E; border-color: #8B3E3E; }
 
@@ -571,11 +577,13 @@ body {
 .site-footer {
     background-color: var(--brown-deep);
     text-align: center;
-    padding: 70px 30px;
+    padding: 80px 30px;
 }
 .footer-thanks {
-    font-size: 1.15rem;
-    line-height: 1.8;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.9;
     color: var(--ecru-dark);
     max-width: 500px;
     margin: 0 auto 30px;
@@ -593,8 +601,10 @@ body {
     margin-bottom: 8px;
 }
 .footer-names {
-    font-family: 'Mrs Saint Delafield', cursive;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 3.5rem;
+    font-weight: 300;
+    font-style: italic;
     color: var(--ecru);
 }
 .admin-link { margin-top: 35px; }
@@ -615,18 +625,20 @@ body {
     padding: 50px 20px 40px;
 }
 .hero-mini-logo {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     object-fit: contain;
     margin-bottom: 15px;
 }
 .hero-mini-names {
-    font-family: 'Mrs Saint Delafield', cursive;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 3rem;
+    font-weight: 300;
+    font-style: italic;
     color: var(--ecru);
-    font-weight: 400;
 }
 .hero-mini-sub {
+    font-family: 'Cormorant Garamond', serif;
     font-size: 1rem;
     color: var(--accent);
     font-style: italic;
@@ -647,14 +659,15 @@ body {
 }
 .status-icon.refused { color: #A05050; }
 .message-section h2 {
-    font-size: 1.8rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
     font-weight: 400;
     margin-bottom: 20px;
     color: var(--brown-dark);
 }
 .message-text {
-    font-size: 1.05rem;
-    line-height: 1.7;
+    font-size: 1.1rem;
+    line-height: 1.8;
     color: var(--brown-light);
     margin-bottom: 30px;
 }
@@ -673,7 +686,8 @@ body {
     text-align: center;
 }
 .countdown-section h2 {
-    font-size: 1.8rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
     font-weight: 400;
     font-style: italic;
     margin-bottom: 40px;
@@ -693,20 +707,22 @@ body {
     padding: 20px 15px;
     background-color: var(--ecru-dark);
     border: 1px solid var(--accent);
-    border-radius: 4px;
 }
 .countdown-number {
+    font-family: 'Cormorant Garamond', serif;
     font-size: 2.8rem;
-    font-weight: 600;
+    font-weight: 300;
     color: var(--brown-dark);
     line-height: 1;
 }
 .countdown-label {
+    font-family: 'Cormorant Garamond', serif;
     font-size: 0.85rem;
+    font-weight: 500;
     color: var(--brown-subtle);
     margin-top: 8px;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
 }
 .welcome-message {
     margin-top: 40px;
@@ -735,8 +751,9 @@ body {
 .tab-btn {
     flex: 1;
     padding: 12px;
-    font-family: 'Playfair Display', serif;
-    font-size: 0.95rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 500;
     color: var(--brown-subtle);
     background: none;
     border: none;
@@ -784,37 +801,57 @@ body {
 /* ========== RESPONSIVE ========== */
 @media (max-width: 768px) {
     .navbar { padding: 12px 20px; }
-    .nav-logo { left: 20px; }
-    .nav-logo img { height: 50px; }
+    .nav-logo { left: 15px; }
+    .nav-logo img { height: 60px; }
+    .navbar.scrolled .nav-logo img { height: 40px; }
     .nav-links { gap: 12px; }
-    .nav-links a { font-size: 0.65rem; letter-spacing: 0.08em; }
+    .nav-links a { font-size: 0.6rem; letter-spacing: 0.1em; }
 
     .hero-title { font-size: 3.5rem; }
     .hero-and { font-size: 3.5rem; }
-    .hero-small-text { font-size: 0.75rem; }
-    .hero-ad-logo { width: 120px; height: 120px; }
+    .hero-small-text { font-size: 0.8rem; }
 
-    .info-grid { grid-template-columns: 1fr; }
-    .section-informations { padding: 50px 20px; }
-    .section-title { font-size: 1.8rem; }
-
-    .split-layout {
+    .section-histoire { padding: 60px 0 30px; }
+    .histoire-header { padding: 0 20px 40px; }
+    .section-title { font-size: 2rem; margin-bottom: 40px; }
+    .histoire-block,
+    .histoire-block.reverse {
         grid-template-columns: 1fr;
+        margin-bottom: 50px;
     }
-    .split-layout.reverse { direction: ltr; }
-    .split-image { min-height: 300px; }
-    .split-content { padding: 40px 25px; }
-    .split-content h2 { font-size: 1.6rem; }
+    .histoire-image img { height: 350px; }
+    .histoire-text { padding: 35px 25px; }
+    .histoire-text h3 { font-size: 1.6rem; }
+
+    .info-gallery {
+        flex-direction: column;
+        height: auto;
+    }
+    .info-gallery-item {
+        flex: none;
+        height: 200px;
+        width: 100%;
+    }
+    .info-gallery-item:hover { flex: none; }
+
+    .section-informations { padding: 60px 15px; }
 
     .countdown-inline { gap: 15px; }
-    .countdown-inline-number { font-size: 2rem; }
+    .countdown-inline-number { font-size: 2.2rem; }
     .countdown-inline-item { min-width: 65px; }
-    .save-the-date-label { font-size: 2rem; }
+    .save-the-date-label { font-size: 2.2rem; }
 
     .rsvp-header { flex-direction: column; gap: 15px; }
+    .rsvp-title { font-size: 2rem; }
 
     .hero-mini-names { font-size: 2.2rem; }
+    .footer-names { font-size: 2.5rem; }
 
     .guest-card-header { flex-direction: column; }
     .guest-card-actions { flex-wrap: wrap; }
+
+    .splash-svg {
+        width: min(280px, 70vmin);
+        height: min(320px, 80vmin);
+    }
 }

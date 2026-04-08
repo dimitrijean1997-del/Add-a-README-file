@@ -6,13 +6,22 @@
     <title>Alice & Dimitri - 04 Septembre 2027</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Playfair+Display+SC:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- ========== SPLASH SCREEN ========== -->
     <div id="splash-screen" class="splash">
-        <img src="Marron BG.png" alt="A&D" class="splash-logo">
+        <svg id="ad-logo-svg" class="splash-svg" viewBox="0 0 300 350" xmlns="http://www.w3.org/2000/svg">
+            <!-- Letter A -->
+            <path class="draw-path" d="M 90 260 L 150 80 L 210 260" fill="none" stroke="#3E2A1E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- A crossbar -->
+            <path class="draw-path" d="M 115 200 L 185 200" fill="none" stroke="#3E2A1E" stroke-width="2" stroke-linecap="round"/>
+            <!-- Letter D curve -->
+            <path class="draw-path" d="M 145 75 C 280 75, 280 265, 145 265" fill="none" stroke="#3E2A1E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- D vertical stem -->
+            <path class="draw-path" d="M 145 75 L 145 265" fill="none" stroke="#3E2A1E" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
     </div>
 
     <!-- ========== PAGE PRINCIPALE ========== -->
@@ -25,7 +34,7 @@
             <!-- NAVBAR inside hero -->
             <nav class="navbar">
                 <a href="#" class="nav-logo">
-                    <img src="Logo_Beige-removebg-preview.png" alt="A&D">
+                    <img src="Logo_AD-removebg-preview.png" alt="A&D">
                 </a>
                 <div class="nav-links">
                     <a href="#histoire">Notre Histoire</a>
@@ -35,44 +44,44 @@
                 </div>
             </nav>
             <div class="hero-overlay">
-                <img src="Marron BG.png" alt="A&D" class="hero-ad-logo">
                 <p class="hero-small-text">Nous avons le plaisir de vous inviter au mariage de</p>
                 <h1 class="hero-title">Alice <span class="hero-and">&</span> Dimitri</h1>
                 <p class="hero-date">04 . 09 . 2027</p>
-                <p class="hero-small-text hero-venue">Domaine de Beauregard</p>
+                <p class="hero-small-text hero-venue">Quelque part en Provence...</p>
             </div>
         </header>
 
-        <!-- SECTION NOTRE RENCONTRE -->
-        <section id="histoire" class="section-welcome">
-            <div class="split-layout">
-                <div class="split-image">
-                    <img src="photo-rencontre.jpg" alt="Notre rencontre" class="split-img" onerror="this.parentElement.classList.add('placeholder')">
-                    <div class="img-placeholder-text">Photo de notre rencontre</div>
+        <!-- SECTION NOTRE HISTOIRE -->
+        <section id="histoire" class="section-histoire">
+            <div class="histoire-header">
+                <h2 class="section-title">Notre Histoire</h2>
+            </div>
+
+            <!-- Notre Rencontre - Airelles style -->
+            <div class="histoire-block">
+                <div class="histoire-image">
+                    <img src="Photo de notre rencontre.jpg" alt="Notre rencontre">
                 </div>
-                <div class="split-content">
+                <div class="histoire-text">
                     <p class="script-label">Notre Rencontre</p>
-                    <h2>Le jour où tout a commencé</h2>
+                    <h3>Le jour où tout a commencé</h3>
                     <div class="separator"></div>
                     <p class="body-text">Nous nous sommes rencontrés de la plus belle des façons et avons rapidement su que nous étions faits l'un pour l'autre. De nos premiers instants ensemble, notre histoire a été remplie de rires, d'amour et de bonheur.</p>
                     <p class="body-text">Ce qui a commencé par un regard est devenu la plus belle aventure de nos vies.</p>
                 </div>
             </div>
-        </section>
 
-        <!-- SECTION LES FIANÇAILLES (dark) -->
-        <section class="section-dark">
-            <div class="split-layout reverse">
-                <div class="split-content light-text">
-                    <p class="script-label light">Les Fiançailles</p>
-                    <h2>Le début d'une belle aventure</h2>
-                    <div class="separator light"></div>
+            <!-- Les Fiançailles - reversed Airelles style -->
+            <div class="histoire-block reverse">
+                <div class="histoire-text">
+                    <p class="script-label">Les Fiançailles</p>
+                    <h3>Le début d'une belle aventure</h3>
+                    <div class="separator"></div>
                     <p class="body-text">Après des années de bonheur partagé, le moment tant attendu est arrivé. Une demande, un oui, et la promesse d'une vie entière à deux.</p>
                     <p class="body-text">Aujourd'hui, nous avons choisi de lier nos destins — et nous avons hâte de célébrer ce nouveau chapitre avec vous !</p>
                 </div>
-                <div class="split-image">
-                    <img src="photo-fiancailles.jpg" alt="Les fiançailles" class="split-img" onerror="this.parentElement.classList.add('placeholder')">
-                    <div class="img-placeholder-text">Photo des fiançailles</div>
+                <div class="histoire-image">
+                    <img src="Photo de fiancailles.jpg" alt="Les fiançailles">
                 </div>
             </div>
         </section>
@@ -80,35 +89,31 @@
         <!-- SECTION INFORMATIONS -->
         <section id="informations" class="section-informations">
             <h2 class="section-title">Informations</h2>
-            <div class="info-grid">
-                <a href="#" class="info-card">
-                    <div class="info-card-overlay">
-                        <div class="info-card-icon">&#9962;</div>
-                        <h3>Lieux</h3>
-                        <p>Découvrir le lieu de la célébration</p>
+            <div class="info-gallery">
+                <div class="info-gallery-item" onclick="alert('Prochainement')">
+                    <img src="Le Lieu.webp" alt="Le Lieu">
+                    <div class="info-gallery-overlay">
+                        <h3>Lieu</h3>
                     </div>
-                </a>
-                <a href="#" class="info-card">
-                    <div class="info-card-overlay">
-                        <div class="info-card-icon">&#9968;</div>
-                        <h3>Logements</h3>
-                        <p>Où séjourner à proximité</p>
+                </div>
+                <div class="info-gallery-item" onclick="alert('Prochainement')">
+                    <img src="Les Logements.jpg" alt="Logements à proximité">
+                    <div class="info-gallery-overlay">
+                        <h3>Logements à proximité</h3>
                     </div>
-                </a>
-                <a href="#" class="info-card">
-                    <div class="info-card-overlay">
-                        <div class="info-card-icon">&#9202;</div>
-                        <h3>Déroulement</h3>
-                        <p>Le programme de la journée</p>
+                </div>
+                <div class="info-gallery-item" onclick="alert('Prochainement')">
+                    <img src="eglise.jpg" alt="Déroulé de l'évènement" onerror="this.style.display='none'">
+                    <div class="info-gallery-overlay">
+                        <h3>Déroulé de l'évènement</h3>
                     </div>
-                </a>
-                <a href="#" class="info-card">
-                    <div class="info-card-overlay">
-                        <div class="info-card-icon">&#9733;</div>
+                </div>
+                <div class="info-gallery-item" onclick="alert('Prochainement')">
+                    <img src="voyage.jpg" alt="Liste de Mariage" onerror="this.style.display='none'">
+                    <div class="info-gallery-overlay">
                         <h3>Liste de Mariage</h3>
-                        <p>Contribuer à notre nouvelle vie</p>
                     </div>
-                </a>
+                </div>
             </div>
         </section>
 
@@ -192,7 +197,7 @@
     <!-- ========== PAGE CONFIRMATION (en attente) ========== -->
     <div id="page-pending" class="page">
         <header class="hero-mini">
-            <img src="Marron BG.png" alt="A&D" class="hero-mini-logo">
+            <img src="Logo_AD-removebg-preview.png" alt="A&D" class="hero-mini-logo">
             <h1 class="hero-mini-names">Alice & Dimitri</h1>
         </header>
         <section class="message-section">
@@ -207,7 +212,7 @@
     <!-- ========== PAGE COUNTDOWN (validé) ========== -->
     <div id="page-countdown" class="page">
         <header class="hero-mini">
-            <img src="Marron BG.png" alt="A&D" class="hero-mini-logo">
+            <img src="Logo_AD-removebg-preview.png" alt="A&D" class="hero-mini-logo">
             <h1 class="hero-mini-names">Alice & Dimitri</h1>
         </header>
         <section class="countdown-section">
@@ -237,7 +242,7 @@
     <!-- ========== PAGE REFUSÉ ========== -->
     <div id="page-refused" class="page">
         <header class="hero-mini">
-            <img src="Marron BG.png" alt="A&D" class="hero-mini-logo">
+            <img src="Logo_AD-removebg-preview.png" alt="A&D" class="hero-mini-logo">
             <h1 class="hero-mini-names">Alice & Dimitri</h1>
         </header>
         <section class="message-section">
@@ -251,7 +256,7 @@
     <!-- ========== PAGE ADMIN ========== -->
     <div id="page-admin-login" class="page">
         <header class="hero-mini">
-            <img src="Marron BG.png" alt="A&D" class="hero-mini-logo">
+            <img src="Logo_AD-removebg-preview.png" alt="A&D" class="hero-mini-logo">
             <h1 class="hero-mini-names">Alice & Dimitri</h1>
             <p class="hero-mini-sub">Administration</p>
         </header>
@@ -269,7 +274,7 @@
 
     <div id="page-admin" class="page">
         <header class="hero-mini">
-            <img src="Marron BG.png" alt="A&D" class="hero-mini-logo">
+            <img src="Logo_AD-removebg-preview.png" alt="A&D" class="hero-mini-logo">
             <h1 class="hero-mini-names">Alice & Dimitri</h1>
             <p class="hero-mini-sub">Gestion des invités</p>
         </header>
