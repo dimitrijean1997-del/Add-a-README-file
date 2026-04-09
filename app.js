@@ -309,6 +309,59 @@ function initSplash() {
     requestAnimationFrame(animateDraw);
 }
 
+// ========== GALERIE (localStorage) ==========
+function getPhotos() {
+    return JSON.parse(localStorage.getItem('wedding_photos') || '[]');
+}
+
+function savePhotos(photos) {
+    localStorage.setItem('wedding_photos', JSON.stringify(photos));
+}
+
+function addPhoto(input) {
+    const file = input.files[0];
+    if (!file) return;
+
+    if (file.size > 5 * 1024 * 1024) {
+        alert('La photo ne doit pas dépasser 5 Mo.');
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const photos = getPhotos();
+        photos.unshift({
+            id: Date.now().toString(),
+            data: e.target.result,
+            date: new Date().toLocaleDateString('fr-FR'),
+        });
+        savePhotos(photos);
+        renderGalerie();
+    };
+    reader.readAsDataURL(file);
+    input.value = '';
+}
+
+function renderGalerie() {
+    const container = document.getElementById('galerie-grid');
+    if (!container) return;
+
+    const photos = getPhotos();
+
+    if (photos.length === 0) {
+        container.innerHTML = '<div class="galerie-empty">Aucune photo pour le moment. Soyez le premier à partager un souvenir !</div>';
+        return;
+    }
+
+    container.innerHTML = photos.map(photo => `
+        <div class="galerie-item">
+            <img src="${photo.data}" alt="Photo du mariage">
+            <div class="galerie-item-info">${photo.date}</div>
+        </div>
+    `).join('');
+}
+
 // ========== INIT ==========
 initSplash();
 checkGuestStatus();
+renderGalerie();

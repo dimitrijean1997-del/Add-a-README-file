@@ -21,23 +21,25 @@
     <div id="page-welcome" class="page active">
 
         <!-- HERO with venue background + navbar integrated -->
-        <header class="hero-full">
+        <header id="hero-top" class="hero-full">
             <div class="hero-bg-image"></div>
             <div class="hero-bg-overlay"></div>
             <!-- NAVBAR inside hero -->
             <nav class="navbar">
-                <div class="nav-links-left">
-                    <a href="#histoire">Notre Histoire</a>
-                    <a href="#informations">Détails</a>
+                <div class="nav-logo-row">
+                    <div class="nav-line-side"></div>
+                    <a href="#" class="nav-logo">
+                        <img src="Logo_Beige-removebg-preview.png?v=6" alt="A&D">
+                    </a>
+                    <div class="nav-line-side"></div>
                 </div>
-                <a href="#" class="nav-logo">
-                    <img src="Logo_Beige-removebg-preview.png?v=5" alt="A&D">
-                </a>
-                <div class="nav-links-right">
-                    <a href="#liste-mariage">Liste de Mariage</a>
+                <div class="nav-links">
+                    <a href="#hero-top">Home</a>
+                    <a href="#histoire">Notre Histoire</a>
+                    <a href="#informations">Informations</a>
+                    <a href="#galerie">Galerie</a>
                     <a href="#rsvp">RSVP</a>
                 </div>
-                <div class="nav-line"></div>
             </nav>
             <div class="hero-overlay">
                 <p class="hero-small-text">Mariage</p>
@@ -137,13 +139,15 @@
             </div>
         </section>
 
-        <!-- SECTION LISTE DE MARIAGE -->
-        <section id="liste-mariage" class="section-liste-mariage">
-            <h2 class="section-title">Liste de Mariage</h2>
-            <p class="body-text" style="text-align:center; max-width:600px; margin:0 auto 40px;">Votre présence est le plus beau des cadeaux. Si toutefois vous souhaitez contribuer à notre nouvelle vie à deux, une liste sera bientôt disponible.</p>
-            <div style="text-align:center;">
-                <button class="btn-submit" onclick="alert('Prochainement')">Prochainement</button>
+        <!-- SECTION GALERIE -->
+        <section id="galerie" class="section-galerie">
+            <h2 class="section-title">Galerie</h2>
+            <p class="body-text" style="text-align:center; max-width:600px; margin:0 auto 40px;">Partagez vos plus beaux moments du mariage ! Ajoutez vos photos pour créer ensemble un album souvenir inoubliable.</p>
+            <div class="galerie-upload">
+                <label for="photo-upload" class="btn-submit" style="cursor:pointer;">Ajouter une photo</label>
+                <input type="file" id="photo-upload" accept="image/*" style="display:none;" onchange="addPhoto(this)">
             </div>
+            <div class="galerie-grid" id="galerie-grid"></div>
         </section>
 
         <!-- SECTION RSVP - Airelles style -->
