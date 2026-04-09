@@ -69,7 +69,7 @@ body {
 .nav-links {
     display: flex;
     gap: 45px;
-    margin-top: -2px;
+    margin-top: -8px;
 }
 .nav-links a {
     font-family: 'Cormorant Garamond', serif;
