@@ -110,7 +110,7 @@
 
         <!-- SECTION INFORMATIONS / DETAILS -->
         <section id="informations" class="section-informations">
-            <h2 class="section-title">Détails</h2>
+            <h2 class="section-title">Informations</h2>
             <div class="info-gallery">
                 <div class="info-gallery-item" onclick="alert('Prochainement')">
                     <img src="Le Lieu.webp" alt="Lieu">
@@ -125,15 +125,15 @@
                     </div>
                 </div>
                 <div class="info-gallery-item" onclick="alert('Prochainement')">
-                    <img src="Eglise.jpg" alt="Cérémonie">
+                    <img src="Eglise.jpg" alt="Evènement">
                     <div class="info-gallery-overlay">
-                        <h3>Cérémonie</h3>
+                        <h3>Evènement</h3>
                     </div>
                 </div>
                 <div class="info-gallery-item" onclick="alert('Prochainement')">
-                    <img src="Voyage.jpg" alt="Brunch">
+                    <img src="Voyage.jpg" alt="Liste de Mariage">
                     <div class="info-gallery-overlay">
-                        <h3>Brunch</h3>
+                        <h3>Liste de Mariage</h3>
                     </div>
                 </div>
             </div>
@@ -142,10 +142,10 @@
         <!-- SECTION GALERIE -->
         <section id="galerie" class="section-galerie">
             <h2 class="section-title">Galerie</h2>
-            <p class="body-text" style="text-align:center; max-width:600px; margin:0 auto 40px;">Partagez vos plus beaux moments du mariage ! Ajoutez vos photos pour créer ensemble un album souvenir inoubliable.</p>
+            <p class="body-text" style="text-align:center; max-width:600px; margin:0 auto 40px;">Capturez et partagez vos plus beaux moments ! Photos, vidéos, messages — créez ensemble un album souvenir unique de cette journée inoubliable.</p>
             <div class="galerie-upload">
-                <label for="photo-upload" class="btn-submit" style="cursor:pointer;">Ajouter une photo</label>
-                <input type="file" id="photo-upload" accept="image/*" style="display:none;" onchange="addPhoto(this)">
+                <label for="photo-upload" class="btn-submit" style="cursor:pointer;">Partager</label>
+                <input type="file" id="photo-upload" accept="image/*,video/*" style="display:none;" onchange="addPhoto(this)">
             </div>
             <div class="galerie-grid" id="galerie-grid"></div>
         </section>
