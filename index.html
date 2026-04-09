@@ -4,12 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alice & Dimitri - 04 Septembre 2027</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Playfair+Display+SC:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Mrs+Saint+Delafield&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                        script: ['"Mrs Saint Delafield"', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="bg-[#F5F1EB] font-sans text-[#2C1D13] antialiased min-h-screen flex items-center justify-center p-4 sm:p-6 selection:bg-[#EDE8E0] selection:text-[#2C1D13]">
+
     <!-- ========== SPLASH SCREEN ========== -->
     <div id="splash-screen" class="splash">
         <div class="splash-logo-container">
@@ -17,279 +33,320 @@
         </div>
     </div>
 
-    <!-- ========== PAGE PRINCIPALE ========== -->
-    <div id="page-welcome" class="page active">
+    <!-- ========== MAIN APP CARD ========== -->
+    <div class="w-full max-w-6xl bg-white rounded-sm border border-[#EDE8E0] shadow-[0_4px_24px_-8px_rgba(0,0,0,0.03)] overflow-hidden flex flex-col md:flex-row min-h-[640px] md:h-[88vh]">
 
-        <!-- HERO with venue background + navbar integrated -->
-        <header class="hero-full">
-            <div class="hero-bg-image"></div>
-            <div class="hero-bg-overlay"></div>
-            <!-- NAVBAR inside hero -->
-            <nav class="navbar">
-                <div class="nav-links-left">
-                    <a href="#histoire">Notre Histoire</a>
-                    <a href="#informations">Détails</a>
-                </div>
-                <a href="#" class="nav-logo">
-                    <img src="Logo_Beige-removebg-preview.png?v=5" alt="A&D">
+        <!-- Sidebar Navigation -->
+        <aside class="w-full md:w-60 bg-[#FDFCF9] border-b md:border-b-0 md:border-r border-[#EDE8E0] px-4 py-3 md:p-7 flex md:flex-col flex-shrink-0 items-center md:items-stretch gap-3 md:gap-0">
+            <!-- Logo -->
+            <a href="#" onclick="scrollToSection(null); return false;" class="flex-shrink-0 md:mb-10 md:px-2">
+                <img src="Logo_Beige-removebg-preview.png" alt="A&D" class="h-10 md:h-14 w-auto opacity-90">
+            </a>
+
+            <!-- Navigation -->
+            <nav class="flex md:flex-col gap-1 overflow-x-auto md:overflow-visible flex-1">
+                <a href="#" onclick="scrollToSection(null); return false;" class="flex items-center gap-3 px-3 py-2 md:py-2.5 bg-[#F0EDE6] text-[#2C1D13] text-xs md:text-sm font-medium transition-colors whitespace-nowrap">
+                    <iconify-icon icon="solar:home-angle-linear" width="17" class="hidden md:inline-block"></iconify-icon>
+                    Accueil
                 </a>
-                <div class="nav-links-right">
-                    <a href="#liste-mariage">Liste de Mariage</a>
-                    <a href="#rsvp">RSVP</a>
-                </div>
-                <div class="nav-line"></div>
+                <a href="#" onclick="scrollToSection('histoire'); return false;" class="flex items-center gap-3 px-3 py-2 md:py-2.5 text-[#A8907A] hover:text-[#2C1D13] hover:bg-[#F5F1EB] text-xs md:text-sm font-light transition-colors whitespace-nowrap">
+                    <iconify-icon icon="solar:heart-linear" width="17" class="hidden md:inline-block"></iconify-icon>
+                    Notre Histoire
+                </a>
+                <a href="#" onclick="scrollToSection('informations'); return false;" class="flex items-center gap-3 px-3 py-2 md:py-2.5 text-[#A8907A] hover:text-[#2C1D13] hover:bg-[#F5F1EB] text-xs md:text-sm font-light transition-colors whitespace-nowrap">
+                    <iconify-icon icon="solar:map-linear" width="17" class="hidden md:inline-block"></iconify-icon>
+                    Détails
+                </a>
+                <a href="#" onclick="scrollToSection('liste-mariage'); return false;" class="flex items-center gap-3 px-3 py-2 md:py-2.5 text-[#A8907A] hover:text-[#2C1D13] hover:bg-[#F5F1EB] text-xs md:text-sm font-light transition-colors whitespace-nowrap">
+                    <iconify-icon icon="solar:gift-linear" width="17" class="hidden md:inline-block"></iconify-icon>
+                    Liste de Mariage
+                </a>
+                <a href="#" onclick="scrollToSection('rsvp'); return false;" class="flex items-center gap-3 px-3 py-2 md:py-2.5 text-[#A8907A] hover:text-[#2C1D13] hover:bg-[#F5F1EB] text-xs md:text-sm font-light transition-colors whitespace-nowrap">
+                    <iconify-icon icon="solar:letter-linear" width="17" class="hidden md:inline-block"></iconify-icon>
+                    RSVP
+                </a>
             </nav>
-            <div class="hero-overlay">
-                <p class="hero-small-text">Mariage</p>
-                <h1 class="hero-title">Alice <span class="hero-and">&</span> Dimitri</h1>
-                <p class="hero-date">04.09.2027</p>
-            </div>
-        </header>
 
-        <!-- SECTION COUNTDOWN BANNER -->
-        <section class="section-countdown-banner">
-            <div class="countdown-banner">
-                <div class="countdown-banner-item">
-                    <span class="countdown-banner-number" id="days-inline">000</span>
-                    <span class="countdown-banner-label">Jours</span>
-                </div>
-                <span class="countdown-banner-sep">:</span>
-                <div class="countdown-banner-item">
-                    <span class="countdown-banner-number" id="hours-inline">00</span>
-                    <span class="countdown-banner-label">Heures</span>
-                </div>
-                <span class="countdown-banner-sep">:</span>
-                <div class="countdown-banner-item">
-                    <span class="countdown-banner-number" id="minutes-inline">00</span>
-                    <span class="countdown-banner-label">Minutes</span>
-                </div>
-                <span class="countdown-banner-sep">:</span>
-                <div class="countdown-banner-item">
-                    <span class="countdown-banner-number" id="seconds-inline">00</span>
-                    <span class="countdown-banner-label">Secondes</span>
-                </div>
+            <!-- Admin link -->
+            <div class="md:mt-auto md:pt-6 flex-shrink-0">
+                <a href="#" id="show-admin" class="flex items-center gap-3 px-3 py-2 md:py-2.5 text-[#A8907A] hover:text-[#2C1D13] hover:bg-[#F5F1EB] text-xs md:text-sm font-light transition-colors opacity-50 hover:opacity-100 whitespace-nowrap">
+                    <iconify-icon icon="solar:settings-linear" width="17" class="hidden md:inline-block"></iconify-icon>
+                    Admin
+                </a>
             </div>
-        </section>
+        </aside>
 
-        <!-- SECTION NOTRE HISTOIRE -->
-        <section id="histoire" class="section-histoire">
-            <div class="histoire-header">
-                <h2 class="section-title">Notre Histoire</h2>
-            </div>
+        <!-- Main Content Area -->
+        <main class="flex-1 overflow-y-auto" id="main-content">
 
-            <!-- Notre Rencontre -->
-            <div class="histoire-block">
-                <div class="histoire-image">
-                    <img src="Photo de notre rencontre.jpg" alt="Notre rencontre">
-                </div>
-                <div class="histoire-text">
-                    <p class="script-label">Notre Rencontre</p>
-                    <h3>Le jour où tout a commencé</h3>
-                    <div class="separator"></div>
-                    <p class="body-text">Nous nous sommes rencontrés de la plus belle des façons et avons rapidement su que nous étions faits l'un pour l'autre. De nos premiers instants ensemble, notre histoire a été remplie de rires, d'amour et de bonheur.</p>
-                    <p class="body-text">Ce qui a commencé par un regard est devenu la plus belle aventure de nos vies.</p>
-                </div>
-            </div>
-
-            <!-- Les Fiançailles -->
-            <div class="histoire-block reverse">
-                <div class="histoire-text">
-                    <p class="script-label">Les Fiançailles</p>
-                    <h3>Le début d'une belle aventure</h3>
-                    <div class="separator"></div>
-                    <p class="body-text">Après des années de bonheur partagé, le moment tant attendu est arrivé. Une demande, un oui, et la promesse d'une vie entière à deux.</p>
-                    <p class="body-text">Aujourd'hui, nous avons choisi de lier nos destins — et nous avons hâte de célébrer ce nouveau chapitre avec vous !</p>
-                </div>
-                <div class="histoire-image">
-                    <img src="Photo de fiancailles.jpg" alt="Les fiançailles">
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION INFORMATIONS / DETAILS -->
-        <section id="informations" class="section-informations">
-            <h2 class="section-title">Détails</h2>
-            <div class="info-gallery">
-                <div class="info-gallery-item" onclick="alert('Prochainement')">
-                    <img src="Le Lieu.webp" alt="Lieu">
-                    <div class="info-gallery-overlay">
-                        <h3>Lieu</h3>
+            <!-- ========== PAGE WELCOME ========== -->
+            <div id="page-welcome" class="page active">
+                <!-- Hero Banner -->
+                <div class="relative w-full h-56 sm:h-72 overflow-hidden">
+                    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('domaine_de_beauregard-removebg-preview.png')"></div>
+                    <div class="absolute inset-0 bg-[#2C1D13]/70"></div>
+                    <div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
+                        <p class="text-[11px] uppercase tracking-[0.3em] text-[#EDE8E0] mb-3 font-sans font-light">Mariage</p>
+                        <h1 class="font-serif text-5xl sm:text-6xl font-light italic text-[#F5F1EB]">Alice <span>&</span> Dimitri</h1>
+                        <p class="text-[11px] uppercase tracking-[0.5em] text-[#EDE8E0] mt-5 font-sans font-light">04 Septembre 2027</p>
                     </div>
                 </div>
-                <div class="info-gallery-item" onclick="alert('Prochainement')">
-                    <img src="Les Logements.jpg" alt="Logements à Proximité">
-                    <div class="info-gallery-overlay">
-                        <h3>Logements à Proximité</h3>
-                    </div>
-                </div>
-                <div class="info-gallery-item" onclick="alert('Prochainement')">
-                    <img src="Eglise.jpg" alt="Cérémonie">
-                    <div class="info-gallery-overlay">
-                        <h3>Cérémonie</h3>
-                    </div>
-                </div>
-                <div class="info-gallery-item" onclick="alert('Prochainement')">
-                    <img src="Voyage.jpg" alt="Brunch">
-                    <div class="info-gallery-overlay">
-                        <h3>Brunch</h3>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- SECTION LISTE DE MARIAGE -->
-        <section id="liste-mariage" class="section-liste-mariage">
-            <h2 class="section-title">Liste de Mariage</h2>
-            <p class="body-text" style="text-align:center; max-width:600px; margin:0 auto 40px;">Votre présence est le plus beau des cadeaux. Si toutefois vous souhaitez contribuer à notre nouvelle vie à deux, une liste sera bientôt disponible.</p>
-            <div style="text-align:center;">
-                <button class="btn-submit" onclick="alert('Prochainement')">Prochainement</button>
-            </div>
-        </section>
+                <!-- Content -->
+                <div class="p-8 sm:p-12 lg:p-14">
 
-        <!-- SECTION RSVP - Airelles style -->
-        <section id="rsvp" class="section-rsvp">
-            <div class="rsvp-container">
-                <h2 class="section-title" style="text-align:center;">RSVP</h2>
-                <form id="rsvp-form">
-                    <div class="form-group">
-                        <input type="text" id="guest-firstname" required placeholder="Prénom*">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="guest-name" required placeholder="Nom*">
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="guest-email" required placeholder="E-mail*">
-                    </div>
-                    <div class="form-group">
-                        <label>Serez-vous présent(e) ?</label>
-                        <div class="checkbox-group">
-                            <label class="check-label">
-                                <input type="radio" name="attending" value="yes" checked>
-                                <span class="checkmark"></span>
-                                <span>Oui</span>
-                            </label>
-                            <label class="check-label">
-                                <input type="radio" name="attending" value="no">
-                                <span class="checkmark"></span>
-                                <span>Non</span>
-                            </label>
+                    <!-- Countdown -->
+                    <section class="mb-12">
+                        <div class="flex justify-center items-center gap-6 sm:gap-8">
+                            <div class="flex flex-col items-center">
+                                <span class="font-serif text-3xl font-light text-[#2C1D13]" id="days-inline">000</span>
+                                <span class="text-[10px] uppercase tracking-widest text-[#A8907A] mt-2 font-sans">Jours</span>
+                            </div>
+                            <span class="font-serif text-xl text-[#A8907A] opacity-50 self-start mt-1">:</span>
+                            <div class="flex flex-col items-center">
+                                <span class="font-serif text-3xl font-light text-[#2C1D13]" id="hours-inline">00</span>
+                                <span class="text-[10px] uppercase tracking-widest text-[#A8907A] mt-2 font-sans">Heures</span>
+                            </div>
+                            <span class="font-serif text-xl text-[#A8907A] opacity-50 self-start mt-1">:</span>
+                            <div class="flex flex-col items-center">
+                                <span class="font-serif text-3xl font-light text-[#2C1D13]" id="minutes-inline">00</span>
+                                <span class="text-[10px] uppercase tracking-widest text-[#A8907A] mt-2 font-sans">Minutes</span>
+                            </div>
+                            <span class="font-serif text-xl text-[#A8907A] opacity-50 self-start mt-1">:</span>
+                            <div class="flex flex-col items-center">
+                                <span class="font-serif text-3xl font-light text-[#2C1D13]" id="seconds-inline">00</span>
+                                <span class="text-[10px] uppercase tracking-widest text-[#A8907A] mt-2 font-sans">Secondes</span>
+                            </div>
                         </div>
+                    </section>
+
+                    <hr class="border-[#EDE8E0] mb-12">
+
+                    <!-- Notre Histoire -->
+                    <section id="histoire" class="mb-12">
+                        <h2 class="text-xs uppercase tracking-widest font-medium text-[#A8907A] mb-8 font-sans">Notre Histoire</h2>
+                        <div class="space-y-10">
+                            <!-- Rencontre -->
+                            <div>
+                                <div class="overflow-hidden rounded-sm mb-5">
+                                    <img src="Photo de notre rencontre.jpg" alt="Notre rencontre" class="w-full h-56 sm:h-64 object-cover hover:scale-[1.02] transition-transform duration-700">
+                                </div>
+                                <p class="font-script text-2xl text-[#5C4033] mb-1">Notre Rencontre</p>
+                                <h3 class="font-serif text-lg font-medium italic text-[#2C1D13] mb-3">Le jour où tout a commencé</h3>
+                                <div class="w-10 h-px bg-[#5C4033] mb-4"></div>
+                                <p class="text-sm text-[#7A5C4F] font-light leading-relaxed mb-2">Nous nous sommes rencontrés de la plus belle des façons et avons rapidement su que nous étions faits l'un pour l'autre. De nos premiers instants ensemble, notre histoire a été remplie de rires, d'amour et de bonheur.</p>
+                                <p class="text-sm text-[#7A5C4F] font-light leading-relaxed">Ce qui a commencé par un regard est devenu la plus belle aventure de nos vies.</p>
+                            </div>
+                            <!-- Fiançailles -->
+                            <div>
+                                <div class="overflow-hidden rounded-sm mb-5">
+                                    <img src="Photo de fiancailles.jpg" alt="Les fiançailles" class="w-full h-56 sm:h-64 object-cover hover:scale-[1.02] transition-transform duration-700">
+                                </div>
+                                <p class="font-script text-2xl text-[#5C4033] mb-1">Les Fiançailles</p>
+                                <h3 class="font-serif text-lg font-medium italic text-[#2C1D13] mb-3">Le début d'une belle aventure</h3>
+                                <div class="w-10 h-px bg-[#5C4033] mb-4"></div>
+                                <p class="text-sm text-[#7A5C4F] font-light leading-relaxed mb-2">Après des années de bonheur partagé, le moment tant attendu est arrivé. Une demande, un oui, et la promesse d'une vie entière à deux.</p>
+                                <p class="text-sm text-[#7A5C4F] font-light leading-relaxed">Aujourd'hui, nous avons choisi de lier nos destins — et nous avons hâte de célébrer ce nouveau chapitre avec vous !</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <hr class="border-[#EDE8E0] mb-12">
+
+                    <!-- Détails -->
+                    <section id="informations" class="mb-12">
+                        <h2 class="text-xs uppercase tracking-widest font-medium text-[#A8907A] mb-8 font-sans">Détails</h2>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="group relative overflow-hidden rounded-sm h-40 sm:h-48 cursor-pointer" onclick="alert('Prochainement')">
+                                <img src="Le Lieu.webp" alt="Lieu" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#2C1D13]/80 via-[#2C1D13]/20 to-transparent flex items-end justify-center pb-4">
+                                    <h3 class="font-serif text-xs sm:text-sm uppercase tracking-widest text-[#F5F1EB]">Lieu</h3>
+                                </div>
+                            </div>
+                            <div class="group relative overflow-hidden rounded-sm h-40 sm:h-48 cursor-pointer" onclick="alert('Prochainement')">
+                                <img src="Les Logements.jpg" alt="Logements" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#2C1D13]/80 via-[#2C1D13]/20 to-transparent flex items-end justify-center pb-4">
+                                    <h3 class="font-serif text-xs sm:text-sm uppercase tracking-widest text-[#F5F1EB]">Logements</h3>
+                                </div>
+                            </div>
+                            <div class="group relative overflow-hidden rounded-sm h-40 sm:h-48 cursor-pointer" onclick="alert('Prochainement')">
+                                <img src="Eglise.jpg" alt="Cérémonie" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#2C1D13]/80 via-[#2C1D13]/20 to-transparent flex items-end justify-center pb-4">
+                                    <h3 class="font-serif text-xs sm:text-sm uppercase tracking-widest text-[#F5F1EB]">Cérémonie</h3>
+                                </div>
+                            </div>
+                            <div class="group relative overflow-hidden rounded-sm h-40 sm:h-48 cursor-pointer" onclick="alert('Prochainement')">
+                                <img src="Voyage.jpg" alt="Brunch" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#2C1D13]/80 via-[#2C1D13]/20 to-transparent flex items-end justify-center pb-4">
+                                    <h3 class="font-serif text-xs sm:text-sm uppercase tracking-widest text-[#F5F1EB]">Brunch</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <hr class="border-[#EDE8E0] mb-12">
+
+                    <!-- Liste de Mariage -->
+                    <section id="liste-mariage" class="mb-12">
+                        <h2 class="text-xs uppercase tracking-widest font-medium text-[#A8907A] mb-6 font-sans">Liste de Mariage</h2>
+                        <p class="text-sm text-[#7A5C4F] font-light leading-relaxed mb-6 max-w-lg">Votre présence est le plus beau des cadeaux. Si toutefois vous souhaitez contribuer à notre nouvelle vie à deux, une liste sera bientôt disponible.</p>
+                        <button class="px-8 py-3 bg-[#3E2A1E] text-white text-xs uppercase tracking-widest font-medium hover:bg-[#2C1D13] transition-colors" onclick="alert('Prochainement')">
+                            Prochainement
+                        </button>
+                    </section>
+
+                    <hr class="border-[#EDE8E0] mb-12">
+
+                    <!-- RSVP -->
+                    <section id="rsvp" class="mb-12">
+                        <h2 class="text-xs uppercase tracking-widest font-medium text-[#A8907A] mb-8 font-sans">RSVP</h2>
+                        <form id="rsvp-form" class="max-w-lg space-y-8">
+                            <div>
+                                <input type="text" id="guest-firstname" required placeholder="Prénom*" class="w-full bg-transparent border-0 border-b border-[#D5D2C8] pb-2 text-base text-[#2C1D13] font-serif font-medium placeholder-[#A8907A] focus:border-[#2C1D13] focus:ring-0 transition-colors rounded-none">
+                            </div>
+                            <div>
+                                <input type="text" id="guest-name" required placeholder="Nom*" class="w-full bg-transparent border-0 border-b border-[#D5D2C8] pb-2 text-base text-[#2C1D13] font-serif font-medium placeholder-[#A8907A] focus:border-[#2C1D13] focus:ring-0 transition-colors rounded-none">
+                            </div>
+                            <div>
+                                <input type="email" id="guest-email" required placeholder="E-mail*" class="w-full bg-transparent border-0 border-b border-[#D5D2C8] pb-2 text-base text-[#2C1D13] font-serif font-medium placeholder-[#A8907A] focus:border-[#2C1D13] focus:ring-0 transition-colors rounded-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs uppercase tracking-widest font-medium text-[#A8907A] mb-4 font-sans">Serez-vous présent(e) ?</label>
+                                <div class="flex gap-8">
+                                    <label class="flex items-center gap-3 cursor-pointer">
+                                        <input type="radio" name="attending" value="yes" checked class="w-4 h-4 accent-[#3E2A1E]">
+                                        <span class="text-sm font-serif text-[#2C1D13]">Oui</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 cursor-pointer">
+                                        <input type="radio" name="attending" value="no" class="w-4 h-4 accent-[#3E2A1E]">
+                                        <span class="text-sm font-serif text-[#2C1D13]">Non</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div>
+                                <textarea id="guest-message" placeholder="Message" rows="4" class="w-full bg-transparent border border-[#D5D2C8] p-3 text-base text-[#2C1D13] font-serif font-medium placeholder-[#A8907A] focus:border-[#2C1D13] focus:ring-0 transition-colors rounded-none resize-vertical"></textarea>
+                            </div>
+                            <button type="submit" class="px-8 py-3 bg-[#3E2A1E] text-[#F5F1EB] text-xs uppercase tracking-widest font-medium hover:bg-[#2C1D13] transition-colors">
+                                Soumettre
+                            </button>
+                        </form>
+                    </section>
+
+                    <!-- Footer -->
+                    <div class="mt-12 pt-8 border-t border-[#EDE8E0] text-center pb-4">
+                        <p class="text-sm text-[#7A5C4F] font-light leading-relaxed mb-4">Merci d'être à nos côtés pour ce jour si spécial.</p>
+                        <p class="font-script text-lg text-[#C4A882] mb-1">avec amour,</p>
+                        <p class="font-serif text-2xl font-light italic text-[#2C1D13]">Alice & Dimitri</p>
                     </div>
-                    <div class="form-group">
-                        <textarea id="guest-message" placeholder="Message" rows="5"></textarea>
+                </div>
+            </div>
+
+            <!-- ========== PAGE PENDING ========== -->
+            <div id="page-pending" class="page">
+                <div class="flex items-center justify-center min-h-[60vh] md:min-h-[70vh] p-8 sm:p-12">
+                    <div class="text-center max-w-md">
+                        <div class="text-5xl mb-6 text-[#C4A882]">&#9202;</div>
+                        <h2 class="font-serif text-2xl font-medium text-[#2C1D13] mb-4">Merci pour votre inscription !</h2>
+                        <p class="text-sm text-[#7A5C4F] font-light leading-relaxed mb-3">Votre demande a bien été enregistrée.<br>Vous recevrez une confirmation prochainement.</p>
+                        <p class="text-sm text-[#A8907A] italic mb-8" id="pending-info"></p>
+                        <button class="px-6 py-3 bg-transparent border border-[#5C4033] text-[#2C1D13] text-xs uppercase tracking-widest font-medium hover:bg-[#3E2A1E] hover:text-[#F5F1EB] transition-colors" id="btn-back-home">
+                            Retour
+                        </button>
                     </div>
-                    <div style="text-align:center;">
-                        <button type="submit" class="btn-submit">Soumettre</button>
+                </div>
+            </div>
+
+            <!-- ========== PAGE COUNTDOWN (accepted) ========== -->
+            <div id="page-countdown" class="page">
+                <div class="flex items-center justify-center min-h-[60vh] md:min-h-[70vh] p-8 sm:p-12">
+                    <div class="text-center max-w-lg">
+                        <h2 class="font-serif text-2xl font-medium italic text-[#2C1D13] mb-10">Le grand jour approche</h2>
+                        <div class="flex justify-center items-center gap-4 flex-wrap mb-10">
+                            <div class="flex flex-col items-center min-w-[80px] p-4 bg-[#EDE8E0] border border-[#C4A882]">
+                                <span class="font-serif text-3xl font-light text-[#2C1D13]" id="days">000</span>
+                                <span class="text-[10px] uppercase tracking-widest text-[#A8907A] mt-2 font-sans">Jours</span>
+                            </div>
+                            <div class="flex flex-col items-center min-w-[80px] p-4 bg-[#EDE8E0] border border-[#C4A882]">
+                                <span class="font-serif text-3xl font-light text-[#2C1D13]" id="hours">00</span>
+                                <span class="text-[10px] uppercase tracking-widest text-[#A8907A] mt-2 font-sans">Heures</span>
+                            </div>
+                            <div class="flex flex-col items-center min-w-[80px] p-4 bg-[#EDE8E0] border border-[#C4A882]">
+                                <span class="font-serif text-3xl font-light text-[#2C1D13]" id="minutes">00</span>
+                                <span class="text-[10px] uppercase tracking-widest text-[#A8907A] mt-2 font-sans">Minutes</span>
+                            </div>
+                            <div class="flex flex-col items-center min-w-[80px] p-4 bg-[#EDE8E0] border border-[#C4A882]">
+                                <span class="font-serif text-3xl font-light text-[#2C1D13]" id="seconds">00</span>
+                                <span class="text-[10px] uppercase tracking-widest text-[#A8907A] mt-2 font-sans">Secondes</span>
+                            </div>
+                        </div>
+                        <p class="text-sm text-[#7A5C4F] font-light italic" id="welcome-message"></p>
                     </div>
-                </form>
-            </div>
-        </section>
-
-        <!-- FOOTER -->
-        <footer class="site-footer">
-            <p class="footer-thanks">Merci d'être à nos côtés pour ce jour si spécial.<br>Nous avons hâte de célébrer avec vous.</p>
-            <div class="footer-divider"></div>
-            <p class="footer-label">avec amour,</p>
-            <p class="footer-names">Alice & Dimitri</p>
-            <p class="admin-link">
-                <a href="#" id="show-admin">Accès administrateur</a>
-            </p>
-        </footer>
-    </div>
-
-    <!-- ========== PAGE CONFIRMATION (en attente) ========== -->
-    <div id="page-pending" class="page">
-        <header class="hero-mini">
-            <img src="Logo_Beige-removebg-preview.png" alt="A&D" class="hero-mini-logo">
-            <h1 class="hero-mini-names">Alice & Dimitri</h1>
-        </header>
-        <section class="message-section">
-            <div class="status-icon">&#9202;</div>
-            <h2>Merci pour votre inscription !</h2>
-            <p class="message-text">Votre demande a bien été enregistrée.<br>Vous recevrez une confirmation prochainement.</p>
-            <p class="guest-info" id="pending-info"></p>
-            <button class="btn-outline" id="btn-back-home">Retour</button>
-        </section>
-    </div>
-
-    <!-- ========== PAGE COUNTDOWN (validé) ========== -->
-    <div id="page-countdown" class="page">
-        <header class="hero-mini">
-            <img src="Logo_Beige-removebg-preview.png" alt="A&D" class="hero-mini-logo">
-            <h1 class="hero-mini-names">Alice & Dimitri</h1>
-        </header>
-        <section class="countdown-section">
-            <h2>Le grand jour approche</h2>
-            <div class="countdown" id="countdown">
-                <div class="countdown-item">
-                    <span class="countdown-number" id="days">000</span>
-                    <span class="countdown-label">Jours</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="hours">00</span>
-                    <span class="countdown-label">Heures</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="minutes">00</span>
-                    <span class="countdown-label">Minutes</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="seconds">00</span>
-                    <span class="countdown-label">Secondes</span>
                 </div>
             </div>
-            <p class="welcome-message" id="welcome-message"></p>
-        </section>
-    </div>
 
-    <!-- ========== PAGE REFUSÉ ========== -->
-    <div id="page-refused" class="page">
-        <header class="hero-mini">
-            <img src="Logo_Beige-removebg-preview.png" alt="A&D" class="hero-mini-logo">
-            <h1 class="hero-mini-names">Alice & Dimitri</h1>
-        </header>
-        <section class="message-section">
-            <div class="status-icon refused">&#10005;</div>
-            <h2>Inscription non validée</h2>
-            <p class="message-text">Nous sommes désolés, votre inscription n'a pas pu être validée.</p>
-            <button class="btn-submit" id="btn-back-countdown">Voir le compte à rebours</button>
-        </section>
-    </div>
-
-    <!-- ========== PAGE ADMIN ========== -->
-    <div id="page-admin-login" class="page">
-        <header class="hero-mini">
-            <img src="Logo_Beige-removebg-preview.png" alt="A&D" class="hero-mini-logo">
-            <h1 class="hero-mini-names">Alice & Dimitri</h1>
-            <p class="hero-mini-sub">Administration</p>
-        </header>
-        <section class="admin-login-section">
-            <form id="admin-login-form">
-                <div class="form-group">
-                    <label for="admin-password">Mot de passe administrateur</label>
-                    <input type="password" id="admin-password" required placeholder="Mot de passe">
+            <!-- ========== PAGE REFUSED ========== -->
+            <div id="page-refused" class="page">
+                <div class="flex items-center justify-center min-h-[60vh] md:min-h-[70vh] p-8 sm:p-12">
+                    <div class="text-center max-w-md">
+                        <div class="text-5xl mb-6 text-[#A05050]">&#10005;</div>
+                        <h2 class="font-serif text-2xl font-medium text-[#2C1D13] mb-4">Inscription non validée</h2>
+                        <p class="text-sm text-[#7A5C4F] font-light leading-relaxed mb-8">Nous sommes désolés, votre inscription n'a pas pu être validée.</p>
+                        <button class="px-8 py-3 bg-[#3E2A1E] text-[#F5F1EB] text-xs uppercase tracking-widest font-medium hover:bg-[#2C1D13] transition-colors" id="btn-back-countdown">
+                            Voir le compte à rebours
+                        </button>
+                    </div>
                 </div>
-                <button type="submit" class="btn-submit">Connexion</button>
-            </form>
-            <button class="btn-outline" id="btn-admin-back">Retour</button>
-        </section>
-    </div>
-
-    <div id="page-admin" class="page">
-        <header class="hero-mini">
-            <img src="Logo_Beige-removebg-preview.png" alt="A&D" class="hero-mini-logo">
-            <h1 class="hero-mini-names">Alice & Dimitri</h1>
-            <p class="hero-mini-sub">Gestion des invités</p>
-        </header>
-        <section class="admin-section">
-            <div class="admin-tabs">
-                <button class="tab-btn active" data-tab="pending">En attente</button>
-                <button class="tab-btn" data-tab="accepted">Acceptés</button>
-                <button class="tab-btn" data-tab="refused">Refusés</button>
             </div>
-            <div class="guest-list" id="guest-list"></div>
-            <button class="btn-outline" id="btn-admin-logout">Déconnexion</button>
-        </section>
+
+            <!-- ========== PAGE ADMIN LOGIN ========== -->
+            <div id="page-admin-login" class="page">
+                <div class="flex items-center justify-center min-h-[60vh] md:min-h-[70vh] p-8 sm:p-12">
+                    <div class="w-full max-w-sm">
+                        <header class="text-center mb-10">
+                            <h2 class="font-serif text-2xl font-medium text-[#2C1D13] mb-2">Administration</h2>
+                            <p class="text-sm text-[#A8907A] font-light">Connexion requise</p>
+                        </header>
+                        <form id="admin-login-form">
+                            <div class="mb-8">
+                                <label for="admin-password" class="block text-xs uppercase tracking-widest font-medium text-[#A8907A] mb-4 font-sans">Mot de passe</label>
+                                <input type="password" id="admin-password" required placeholder="Mot de passe" class="w-full bg-transparent border-0 border-b border-[#D5D2C8] pb-2 text-base text-[#2C1D13] font-serif font-medium placeholder-[#A8907A] focus:border-[#2C1D13] focus:ring-0 transition-colors rounded-none">
+                            </div>
+                            <div class="flex gap-3">
+                                <button type="submit" class="px-8 py-3 bg-[#3E2A1E] text-[#F5F1EB] text-xs uppercase tracking-widest font-medium hover:bg-[#2C1D13] transition-colors">
+                                    Connexion
+                                </button>
+                                <button type="button" class="px-6 py-3 bg-transparent border border-[#5C4033] text-[#2C1D13] text-xs uppercase tracking-widest font-medium hover:bg-[#3E2A1E] hover:text-[#F5F1EB] transition-colors" id="btn-admin-back">
+                                    Retour
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== PAGE ADMIN ========== -->
+            <div id="page-admin" class="page">
+                <div class="p-8 sm:p-12">
+                    <header class="mb-10">
+                        <h2 class="font-serif text-2xl font-medium tracking-tight text-[#2C1D13] mb-2">Gestion des invités</h2>
+                        <p class="text-sm text-[#A8907A] font-light">Gérez les inscriptions et les confirmations.</p>
+                    </header>
+
+                    <div class="flex border-b border-[#EDE8E0] mb-8">
+                        <button class="tab-btn active flex-1 py-3 text-sm font-sans font-medium border-b-2 transition-colors" data-tab="pending">En attente</button>
+                        <button class="tab-btn flex-1 py-3 text-sm font-sans font-medium border-b-2 border-transparent text-[#A8907A] transition-colors" data-tab="accepted">Acceptés</button>
+                        <button class="tab-btn flex-1 py-3 text-sm font-sans font-medium border-b-2 border-transparent text-[#A8907A] transition-colors" data-tab="refused">Refusés</button>
+                    </div>
+
+                    <div id="guest-list" class="mb-10"></div>
+
+                    <button class="px-6 py-3 bg-transparent border border-[#5C4033] text-[#2C1D13] text-xs uppercase tracking-widest font-medium hover:bg-[#3E2A1E] hover:text-[#F5F1EB] transition-colors" id="btn-admin-logout">
+                        Déconnexion
+                    </button>
+                </div>
+            </div>
+
+        </main>
     </div>
 
     <script src="app.js"></script>
