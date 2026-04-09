@@ -26,21 +26,45 @@
             <div class="hero-bg-overlay"></div>
             <!-- NAVBAR inside hero -->
             <nav class="navbar">
-                <a href="#" class="nav-logo">
-                    <img src="Logo_Beige-removebg-preview.png?v=4" alt="A&D">
-                </a>
-                <div class="nav-links">
+                <div class="nav-links-left">
                     <a href="#histoire">Notre Histoire</a>
-                    <a href="#informations">Informations</a>
-                    <a href="#save-the-date">Save the Date</a>
+                    <a href="#informations">Détails</a>
+                </div>
+                <a href="#" class="nav-logo">
+                    <img src="Logo_Beige-removebg-preview.png?v=5" alt="A&D">
+                </a>
+                <div class="nav-links-right">
+                    <a href="#liste-mariage">Liste de Mariage</a>
                     <a href="#rsvp">RSVP</a>
                 </div>
+                <div class="nav-line"></div>
             </nav>
             <div class="hero-overlay">
-                <p class="hero-small-text">Nous avons le plaisir de vous inviter au mariage de</p>
+                <p class="hero-small-text">Le mariage de</p>
                 <h1 class="hero-title">Alice <span class="hero-and">&</span> Dimitri</h1>
-                <p class="hero-date">04 . 09 . 2027</p>
-                <p class="hero-small-text hero-venue">Quelque part en Provence...</p>
+                <p class="hero-date">04.09.2027</p>
+                <!-- Countdown in hero -->
+                <div class="hero-countdown" id="countdown-inline">
+                    <div class="hero-countdown-item">
+                        <span class="hero-countdown-number" id="days-inline">000</span>
+                        <span class="hero-countdown-label">Jours</span>
+                    </div>
+                    <span class="hero-countdown-sep">:</span>
+                    <div class="hero-countdown-item">
+                        <span class="hero-countdown-number" id="hours-inline">00</span>
+                        <span class="hero-countdown-label">Heures</span>
+                    </div>
+                    <span class="hero-countdown-sep">:</span>
+                    <div class="hero-countdown-item">
+                        <span class="hero-countdown-number" id="minutes-inline">00</span>
+                        <span class="hero-countdown-label">Minutes</span>
+                    </div>
+                    <span class="hero-countdown-sep">:</span>
+                    <div class="hero-countdown-item">
+                        <span class="hero-countdown-number" id="seconds-inline">00</span>
+                        <span class="hero-countdown-label">Secondes</span>
+                    </div>
+                </div>
             </div>
         </header>
 
@@ -50,7 +74,7 @@
                 <h2 class="section-title">Notre Histoire</h2>
             </div>
 
-            <!-- Notre Rencontre - Airelles style -->
+            <!-- Notre Rencontre -->
             <div class="histoire-block">
                 <div class="histoire-image">
                     <img src="Photo de notre rencontre.jpg" alt="Notre rencontre">
@@ -64,7 +88,7 @@
                 </div>
             </div>
 
-            <!-- Les Fiançailles - reversed Airelles style -->
+            <!-- Les Fiançailles -->
             <div class="histoire-block reverse">
                 <div class="histoire-text">
                     <p class="script-label">Les Fiançailles</p>
@@ -79,81 +103,59 @@
             </div>
         </section>
 
-        <!-- SECTION INFORMATIONS -->
+        <!-- SECTION INFORMATIONS / DETAILS -->
         <section id="informations" class="section-informations">
-            <h2 class="section-title">Informations</h2>
+            <h2 class="section-title">Détails</h2>
             <div class="info-gallery">
                 <div class="info-gallery-item" onclick="alert('Prochainement')">
-                    <img src="Le Lieu.webp" alt="Le Lieu">
+                    <img src="Le Lieu.webp" alt="Lieu">
                     <div class="info-gallery-overlay">
                         <h3>Lieu</h3>
                     </div>
                 </div>
                 <div class="info-gallery-item" onclick="alert('Prochainement')">
-                    <img src="Les Logements.jpg" alt="Logements à proximité">
+                    <img src="Les Logements.jpg" alt="Logements à Proximité">
                     <div class="info-gallery-overlay">
-                        <h3>Logements à proximité</h3>
+                        <h3>Logements à Proximité</h3>
                     </div>
                 </div>
                 <div class="info-gallery-item" onclick="alert('Prochainement')">
-                    <img src="Eglise.jpg" alt="Déroulé de l'évènement" onerror="this.style.display='none'">
+                    <img src="Eglise.jpg" alt="Cérémonie">
                     <div class="info-gallery-overlay">
-                        <h3>Déroulé de l'évènement</h3>
+                        <h3>Cérémonie</h3>
                     </div>
                 </div>
                 <div class="info-gallery-item" onclick="alert('Prochainement')">
-                    <img src="Voyage.jpg" alt="Liste de Mariage" onerror="this.style.display='none'">
+                    <img src="Voyage.jpg" alt="Brunch">
                     <div class="info-gallery-overlay">
-                        <h3>Liste de Mariage</h3>
+                        <h3>Brunch</h3>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SAVE THE DATE + COUNTDOWN BANNER -->
-        <div id="save-the-date" class="countdown-banner">
-            <p class="save-the-date-label">Save the Date</p>
-            <div class="countdown-inline" id="countdown-inline">
-                <div class="countdown-inline-item">
-                    <span class="countdown-inline-number" id="days-inline">000</span>
-                    <span class="countdown-inline-label">Jours</span>
-                </div>
-                <span class="countdown-inline-sep"></span>
-                <div class="countdown-inline-item">
-                    <span class="countdown-inline-number" id="hours-inline">00</span>
-                    <span class="countdown-inline-label">Heures</span>
-                </div>
-                <span class="countdown-inline-sep"></span>
-                <div class="countdown-inline-item">
-                    <span class="countdown-inline-number" id="minutes-inline">00</span>
-                    <span class="countdown-inline-label">Minutes</span>
-                </div>
-                <span class="countdown-inline-sep"></span>
-                <div class="countdown-inline-item">
-                    <span class="countdown-inline-number" id="seconds-inline">00</span>
-                    <span class="countdown-inline-label">Secondes</span>
-                </div>
+        <!-- SECTION LISTE DE MARIAGE -->
+        <section id="liste-mariage" class="section-liste-mariage">
+            <h2 class="section-title">Liste de Mariage</h2>
+            <p class="body-text" style="text-align:center; max-width:600px; margin:0 auto 40px;">Votre présence est le plus beau des cadeaux. Si toutefois vous souhaitez contribuer à notre nouvelle vie à deux, une liste sera bientôt disponible.</p>
+            <div style="text-align:center;">
+                <button class="btn-submit" onclick="alert('Prochainement')">Prochainement</button>
             </div>
-        </div>
+        </section>
 
-        <!-- SECTION RSVP -->
+        <!-- SECTION RSVP - Airelles style -->
         <section id="rsvp" class="section-rsvp">
             <div class="rsvp-container">
-                <div class="rsvp-header">
-                    <h2 class="rsvp-title">RSVP</h2>
-                    <div class="rsvp-deadline">
-                        <span class="script-label">répondre avant le</span>
-                        <span class="rsvp-date">01.09.2027</span>
-                    </div>
-                </div>
+                <h2 class="section-title" style="text-align:center;">RSVP</h2>
                 <form id="rsvp-form">
                     <div class="form-group">
-                        <label for="guest-name">Votre nom complet *</label>
-                        <input type="text" id="guest-name" required>
+                        <input type="text" id="guest-firstname" required placeholder="Prénom*">
                     </div>
                     <div class="form-group">
-                        <label for="guest-email">Votre email *</label>
-                        <input type="email" id="guest-email" required>
+                        <input type="text" id="guest-name" required placeholder="Nom*">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="guest-email" required placeholder="E-mail*">
                     </div>
                     <div class="form-group">
                         <label>Serez-vous présent(e) ?</label>
@@ -170,7 +172,12 @@
                             </label>
                         </div>
                     </div>
-                    <button type="submit" class="btn-submit">Confirmer</button>
+                    <div class="form-group">
+                        <textarea id="guest-message" placeholder="Message" rows="5"></textarea>
+                    </div>
+                    <div style="text-align:center;">
+                        <button type="submit" class="btn-submit">Soumettre</button>
+                    </div>
                 </form>
             </div>
         </section>
@@ -190,7 +197,7 @@
     <!-- ========== PAGE CONFIRMATION (en attente) ========== -->
     <div id="page-pending" class="page">
         <header class="hero-mini">
-            <img src="Logo_AD-removebg-preview.png" alt="A&D" class="hero-mini-logo">
+            <img src="Logo_Beige-removebg-preview.png" alt="A&D" class="hero-mini-logo">
             <h1 class="hero-mini-names">Alice & Dimitri</h1>
         </header>
         <section class="message-section">
@@ -205,7 +212,7 @@
     <!-- ========== PAGE COUNTDOWN (validé) ========== -->
     <div id="page-countdown" class="page">
         <header class="hero-mini">
-            <img src="Logo_AD-removebg-preview.png" alt="A&D" class="hero-mini-logo">
+            <img src="Logo_Beige-removebg-preview.png" alt="A&D" class="hero-mini-logo">
             <h1 class="hero-mini-names">Alice & Dimitri</h1>
         </header>
         <section class="countdown-section">
@@ -235,13 +242,13 @@
     <!-- ========== PAGE REFUSÉ ========== -->
     <div id="page-refused" class="page">
         <header class="hero-mini">
-            <img src="Logo_AD-removebg-preview.png" alt="A&D" class="hero-mini-logo">
+            <img src="Logo_Beige-removebg-preview.png" alt="A&D" class="hero-mini-logo">
             <h1 class="hero-mini-names">Alice & Dimitri</h1>
         </header>
         <section class="message-section">
             <div class="status-icon refused">&#10005;</div>
             <h2>Inscription non validée</h2>
-            <p class="message-text">Nous sommes désolés, votre accompagnant(e) n'a pas pu être accepté(e).<br>Vous êtes néanmoins le/la bienvenu(e) au mariage !</p>
+            <p class="message-text">Nous sommes désolés, votre inscription n'a pas pu être validée.</p>
             <button class="btn-submit" id="btn-back-countdown">Voir le compte à rebours</button>
         </section>
     </div>
@@ -249,7 +256,7 @@
     <!-- ========== PAGE ADMIN ========== -->
     <div id="page-admin-login" class="page">
         <header class="hero-mini">
-            <img src="Logo_AD-removebg-preview.png" alt="A&D" class="hero-mini-logo">
+            <img src="Logo_Beige-removebg-preview.png" alt="A&D" class="hero-mini-logo">
             <h1 class="hero-mini-names">Alice & Dimitri</h1>
             <p class="hero-mini-sub">Administration</p>
         </header>
@@ -267,7 +274,7 @@
 
     <div id="page-admin" class="page">
         <header class="hero-mini">
-            <img src="Logo_AD-removebg-preview.png" alt="A&D" class="hero-mini-logo">
+            <img src="Logo_Beige-removebg-preview.png" alt="A&D" class="hero-mini-logo">
             <h1 class="hero-mini-names">Alice & Dimitri</h1>
             <p class="hero-mini-sub">Gestion des invités</p>
         </header>

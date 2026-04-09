@@ -46,15 +46,18 @@ const rsvpForm = document.getElementById('rsvp-form');
 rsvpForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
+    const firstname = document.getElementById('guest-firstname').value.trim();
     const name = document.getElementById('guest-name').value.trim();
     const email = document.getElementById('guest-email').value.trim();
+    const message = document.getElementById('guest-message') ? document.getElementById('guest-message').value.trim() : '';
 
-    if (!name || !email) return;
+    if (!firstname || !name || !email) return;
 
     const guest = {
         id: Date.now().toString(),
-        name,
+        name: firstname + ' ' + name,
         email,
+        message,
         status: 'pending',
         createdAt: new Date().toISOString()
     };
