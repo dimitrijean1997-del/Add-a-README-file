@@ -50,7 +50,7 @@ body {
 .nav-links-left a,
 .nav-links-right a {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 0.85rem;
+    font-size: 1.1rem;
     font-weight: 500;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -62,7 +62,7 @@ body {
 .nav-links-right a:hover { color: var(--accent); }
 
 .nav-logo img {
-    height: 120px;
+    height: 160px;
     width: auto;
     object-fit: contain;
     transition: height 0.4s;
@@ -233,6 +233,48 @@ body {
     font-family: 'Cormorant Garamond', serif;
     font-size: 2rem;
     color: var(--ecru-dark);
+    opacity: 0.5;
+    align-self: flex-start;
+    margin-top: 5px;
+}
+
+/* ========== COUNTDOWN BANNER (beige section) ========== */
+.section-countdown-banner {
+    background-color: var(--ecru);
+    padding: 60px 30px;
+    text-align: center;
+}
+.countdown-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+.countdown-banner-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.countdown-banner-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--brown-dark);
+    line-height: 1;
+}
+.countdown-banner-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--brown-subtle);
+    margin-top: 8px;
+}
+.countdown-banner-sep {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    color: var(--brown-subtle);
     opacity: 0.5;
     align-self: flex-start;
     margin-top: 5px;
@@ -792,9 +834,10 @@ body {
     .hero-title { font-size: 3.2rem; }
     .hero-and { font-size: 3.2rem; }
     .hero-small-text { font-size: 0.75rem; }
-    .hero-countdown { gap: 12px; margin-top: 25px; }
-    .hero-countdown-number { font-size: 1.6rem; }
-    .hero-countdown-sep { font-size: 1.2rem; }
+    .countdown-banner { gap: 15px; }
+    .countdown-banner-number { font-size: 2rem; }
+    .countdown-banner-sep { font-size: 1.4rem; }
+    .section-countdown-banner { padding: 40px 15px; }
 
     .section-histoire { padding: 60px 0 30px; }
     .histoire-header { padding: 0 20px 40px; }
