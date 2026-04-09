@@ -1,8 +1,92 @@
-/* ========== SPLASH - DRAWING REVEAL ========== */
+/* ========== VARIABLES ========== */
+:root {
+    --ecru: #F5F1EB;
+    --ecru-dark: #EDE8E0;
+    --brown: #5C4033;
+    --brown-dark: #3E2A1E;
+    --brown-deep: #2C1D13;
+    --brown-light: #7A5C4F;
+    --brown-subtle: #A8907A;
+    --accent: #C4A882;
+    --white: #FFFFFF;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    background-color: var(--ecru);
+    color: var(--brown-dark);
+}
+
+/* ========== NAVBAR - centered logo, split links, line ========== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 50px;
+    transition: background-color 0.4s, padding 0.4s;
+}
+.navbar.scrolled {
+    background-color: rgba(44, 29, 19, 0.95);
+    backdrop-filter: blur(8px);
+    padding: 10px 50px;
+}
+
+.nav-links-left,
+.nav-links-right {
+    display: flex;
+    gap: 40px;
+}
+.nav-links-left { margin-right: 40px; }
+.nav-links-right { margin-left: 40px; }
+
+.nav-links-left a,
+.nav-links-right a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ecru-dark);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.nav-links-left a:hover,
+.nav-links-right a:hover { color: var(--accent); }
+
+.nav-logo img {
+    height: 160px;
+    width: auto;
+    object-fit: contain;
+    transition: height 0.4s;
+}
+.navbar.scrolled .nav-logo img {
+    height: 50px;
+}
+
+/* Line under nav that doesn't cut the logo */
+.nav-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: rgba(196, 168, 130, 0.4);
+    z-index: -1;
+}
+
+/* ========== SPLASH - DRAWING REVEAL (Airelles style) ========== */
 .splash {
     position: fixed;
     inset: 0;
-    background-color: #F5F1EB;
+    background-color: var(--ecru);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,6 +108,7 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
+    /* Start invisible — JS will animate the mask */
     -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 0%, transparent 0%, transparent 100%);
     mask-image: linear-gradient(to bottom, #000 0%, #000 0%, transparent 0%, transparent 100%);
     -webkit-mask-size: 100% 100%;
@@ -34,44 +119,757 @@
 
 /* ========== PAGES ========== */
 .page { display: none; }
-.page.active { display: block; animation: fadeIn 0.6s ease; }
+.page.active { display: block; animation: fadeIn 0.8s ease; }
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
 
-/* ========== ADMIN TAB BUTTONS ========== */
-.tab-btn {
-    border-bottom-color: transparent;
-    color: #A8907A;
-    cursor: pointer;
-    background: none;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-}
-.tab-btn.active {
-    color: #2C1D13;
-    border-bottom-color: #5C4033;
-}
-.tab-btn:hover {
-    color: #5C4033;
+/* ========== HERO FULL ========== */
+.hero-full {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
 }
 
-/* ========== SCROLLBAR ========== */
-#main-content::-webkit-scrollbar {
-    width: 4px;
+.hero-bg-image {
+    position: absolute;
+    inset: 0;
+    background-image: url('domaine_de_beauregard-removebg-preview.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
 }
-#main-content::-webkit-scrollbar-track {
+
+.hero-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(44, 29, 19, 0.72);
+    z-index: 1;
+}
+
+.hero-overlay {
+    text-align: center;
+    padding: 60px 30px;
+    z-index: 2;
+}
+
+.hero-small-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ecru-dark);
+    margin-bottom: 20px;
+}
+
+.hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 7rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ecru);
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    margin-bottom: 15px;
+}
+
+.hero-and {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 7rem;
+    font-weight: 300;
+    font-style: italic;
+    display: inline-block;
+    color: var(--ecru);
+}
+
+.hero-date {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--ecru-dark);
+    margin-top: 25px;
+}
+
+/* Hero countdown */
+.hero-countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    margin-top: 40px;
+}
+.hero-countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.hero-countdown-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--ecru);
+    line-height: 1;
+}
+.hero-countdown-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ecru-dark);
+    opacity: 0.7;
+    margin-top: 5px;
+}
+.hero-countdown-sep {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    color: var(--ecru-dark);
+    opacity: 0.5;
+    align-self: flex-start;
+    margin-top: 5px;
+}
+
+/* ========== COUNTDOWN BANNER (beige section) ========== */
+.section-countdown-banner {
+    background-color: var(--ecru);
+    padding: 60px 30px;
+    text-align: center;
+}
+.countdown-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+.countdown-banner-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.countdown-banner-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--brown-dark);
+    line-height: 1;
+}
+.countdown-banner-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--brown-subtle);
+    margin-top: 8px;
+}
+.countdown-banner-sep {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    color: var(--brown-subtle);
+    opacity: 0.5;
+    align-self: flex-start;
+    margin-top: 5px;
+}
+
+/* ========== SECTION NOTRE HISTOIRE - Airelles style ========== */
+.section-histoire {
+    background-color: var(--ecru);
+    padding: 100px 0 60px;
+}
+
+.histoire-header {
+    text-align: center;
+    padding: 0 40px 80px;
+}
+
+.histoire-block {
+    display: grid;
+    grid-template-columns: 55% 45%;
+    max-width: 1200px;
+    margin: 0 auto 100px;
+    gap: 0;
+    align-items: start;
+}
+
+.histoire-block.reverse {
+    grid-template-columns: 45% 55%;
+}
+
+.histoire-image {
+    overflow: hidden;
+}
+.histoire-image img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+.histoire-image:hover img {
+    transform: scale(1.03);
+}
+
+.histoire-text {
+    padding: 60px 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.histoire-text h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.3;
+    color: var(--brown-dark);
+    margin-bottom: 25px;
+}
+
+.script-label {
+    font-family: 'Mrs Saint Delafield', cursive;
+    font-size: 2.2rem;
+    color: var(--brown);
+    margin-bottom: 15px;
+}
+.script-label.light { color: var(--accent); }
+
+.separator {
+    width: 60px;
+    height: 1.5px;
+    background-color: var(--brown);
+    margin-bottom: 30px;
+}
+.separator.light { background-color: var(--accent); }
+
+.body-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    line-height: 1.9;
+    color: var(--brown-light);
+    margin-bottom: 18px;
+}
+
+/* ========== SECTION TITLE (shared) ========== */
+.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brown-dark);
+    margin-bottom: 60px;
+}
+
+/* ========== SECTION INFORMATIONS - 4 cards side by side expand ========== */
+.section-informations {
+    padding: 100px 20px;
+    background-color: var(--ecru);
+    text-align: center;
+}
+
+.info-gallery {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 450px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.info-gallery-item {
+    position: relative;
+    flex: 1;
+    height: 100%;
+    overflow: hidden;
+    cursor: pointer;
+    transition: flex 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: var(--brown-deep);
+}
+.info-gallery-item:hover {
+    flex: 3;
+}
+
+.info-gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.6s ease;
+}
+.info-gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.info-gallery-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 30px 15px;
+    background: linear-gradient(to top, rgba(44, 29, 19, 0.85) 0%, rgba(44, 29, 19, 0.2) 50%, transparent 100%);
+    transition: background 0.4s;
+}
+
+.info-gallery-overlay h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ecru);
+    text-align: center;
+    transition: font-size 0.4s;
+}
+.info-gallery-item:hover .info-gallery-overlay h3 {
+    font-size: 1.5rem;
+}
+
+/* ========== SECTION LISTE DE MARIAGE ========== */
+.section-liste-mariage {
+    padding: 80px 30px;
+    background-color: var(--ecru);
+    text-align: center;
+}
+
+/* ========== SECTION RSVP - Airelles style ========== */
+.section-rsvp {
+    padding: 80px 30px;
+    background-color: var(--ecru);
+}
+
+.rsvp-container {
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* ========== FORM ========== */
+.form-group {
+    margin-bottom: 32px;
+}
+.form-group label {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--brown);
+    margin-bottom: 10px;
+}
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 14px 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    border: none;
+    border-bottom: 1px solid var(--brown-subtle);
     background: transparent;
+    color: var(--brown-dark);
+    outline: none;
+    transition: border-color 0.3s;
 }
-#main-content::-webkit-scrollbar-thumb {
-    background-color: #D5D2C8;
-    border-radius: 2px;
+.form-group input::placeholder {
+    color: var(--brown-subtle);
+    font-style: normal;
+}
+.form-group input:focus {
+    border-bottom-color: var(--brown-dark);
+}
+.form-group textarea {
+    width: 100%;
+    padding: 14px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    border: 1px solid var(--brown-subtle);
+    background: transparent;
+    color: var(--brown-dark);
+    outline: none;
+    resize: vertical;
+    transition: border-color 0.3s;
+}
+.form-group textarea::placeholder {
+    color: var(--brown-subtle);
+}
+.form-group textarea:focus {
+    border-color: var(--brown-dark);
+}
+
+/* Checkboxes styled as squares */
+.checkbox-group {
+    display: flex;
+    gap: 30px;
+    margin-top: 10px;
+}
+.check-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+.check-label input { display: none; }
+.checkmark {
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid var(--brown);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+.check-label input:checked + .checkmark {
+    background-color: var(--brown-dark);
+    border-color: var(--brown-dark);
+}
+.check-label input:checked + .checkmark::after {
+    content: '\2713';
+    color: var(--ecru);
+    font-size: 0.85rem;
+}
+
+/* ========== BUTTONS ========== */
+.btn-submit {
+    display: inline-block;
+    padding: 16px 55px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ecru);
+    background-color: var(--brown-dark);
+    border: 1.5px solid var(--brown-dark);
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 20px;
+}
+.btn-submit:hover {
+    background-color: var(--brown-deep);
+    border-color: var(--brown-deep);
+}
+
+.btn-outline {
+    display: inline-block;
+    padding: 14px 45px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--brown-dark);
+    background: transparent;
+    border: 1.5px solid var(--brown);
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 15px;
+}
+.btn-outline:hover {
+    background-color: var(--brown-dark);
+    color: var(--ecru);
+}
+
+/* Admin compat */
+.btn-accept {
+    background-color: #6B8F5E; border: 1.5px solid #6B8F5E; color: var(--white);
+    padding: 8px 18px; font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem; font-weight: 600; cursor: pointer; letter-spacing: 0.05em;
+}
+.btn-accept:hover { background-color: #5A7A4F; border-color: #5A7A4F; }
+.btn-refuse {
+    background-color: #A05050; border: 1.5px solid #A05050; color: var(--white);
+    padding: 8px 18px; font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem; font-weight: 600; cursor: pointer; letter-spacing: 0.05em;
+}
+.btn-refuse:hover { background-color: #8B3E3E; border-color: #8B3E3E; }
+
+/* ========== FOOTER ========== */
+.site-footer {
+    background-color: var(--brown-deep);
+    text-align: center;
+    padding: 80px 30px;
+}
+.footer-thanks {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.9;
+    color: var(--ecru-dark);
+    max-width: 500px;
+    margin: 0 auto 30px;
+}
+.footer-divider {
+    width: 50px;
+    height: 1px;
+    background-color: var(--accent);
+    margin: 0 auto 25px;
+}
+.footer-label {
+    font-family: 'Mrs Saint Delafield', cursive;
+    font-size: 1.6rem;
+    color: var(--accent);
+    margin-bottom: 8px;
+}
+.footer-names {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ecru);
+}
+.admin-link { margin-top: 35px; }
+.admin-link a {
+    color: var(--brown-subtle);
+    font-size: 0.8rem;
+    text-decoration: none;
+    font-style: italic;
+    opacity: 0.4;
+    transition: opacity 0.3s;
+}
+.admin-link a:hover { opacity: 1; }
+
+/* ========== MINI HERO (secondary pages) ========== */
+.hero-mini {
+    background-color: var(--brown-deep);
+    text-align: center;
+    padding: 50px 20px 40px;
+}
+.hero-mini-logo {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+.hero-mini-names {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ecru);
+}
+.hero-mini-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--accent);
+    font-style: italic;
+    margin-top: 8px;
+}
+
+/* ========== MESSAGE SECTIONS ========== */
+.message-section {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 60px 25px;
+    text-align: center;
+}
+.status-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: var(--accent);
+}
+.status-icon.refused { color: #A05050; }
+.message-section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: var(--brown-dark);
+}
+.message-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--brown-light);
+    margin-bottom: 30px;
+}
+.guest-info {
+    font-size: 1rem;
+    color: var(--brown-subtle);
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+/* ========== COUNTDOWN PAGE ========== */
+.countdown-section {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 60px 25px;
+    text-align: center;
+}
+.countdown-section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 40px;
+    color: var(--brown-dark);
+}
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100px;
+    padding: 20px 15px;
+    background-color: var(--ecru-dark);
+    border: 1px solid var(--accent);
+}
+.countdown-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: var(--brown-dark);
+    line-height: 1;
+}
+.countdown-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--brown-subtle);
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+}
+.welcome-message {
+    margin-top: 40px;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--brown-light);
+}
+
+/* ========== ADMIN ========== */
+.admin-login-section {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 50px 25px;
+    text-align: center;
+}
+.admin-section {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 30px 25px 60px;
+}
+.admin-tabs {
+    display: flex;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--ecru-dark);
+}
+.tab-btn {
+    flex: 1;
+    padding: 12px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--brown-subtle);
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: -2px;
+}
+.tab-btn.active { color: var(--brown-dark); border-bottom-color: var(--brown); }
+.tab-btn:hover { color: var(--brown); }
+
+.guest-card {
+    background-color: var(--white);
+    border: 1px solid var(--ecru-dark);
+    padding: 20px;
+    margin-bottom: 15px;
+    transition: box-shadow 0.3s;
+}
+.guest-card:hover { box-shadow: 0 2px 15px rgba(0,0,0,0.08); }
+.guest-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+.guest-card-name { font-size: 1.2rem; font-weight: 600; color: var(--brown-dark); }
+.guest-card-email { font-size: 0.85rem; color: var(--brown-subtle); font-style: italic; }
+.guest-card-companion { font-size: 0.95rem; color: var(--brown-light); margin-top: 6px; }
+.guest-card-actions { margin-top: 12px; display: flex; gap: 8px; }
+.guest-card-status {
+    display: inline-block;
+    padding: 4px 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+.status-accepted { background-color: #E8F0E4; color: #5A7A4F; }
+.status-refused { background-color: #F0E4E4; color: #8B3E3E; }
+.empty-list {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--brown-subtle);
+    font-style: italic;
 }
 
 /* ========== RESPONSIVE ========== */
 @media (max-width: 768px) {
+    .navbar { padding: 10px 15px; flex-wrap: wrap; gap: 5px; }
+    .nav-logo img { height: 55px; }
+    .navbar.scrolled .nav-logo img { height: 35px; }
+    .nav-links-left,
+    .nav-links-right { gap: 12px; }
+    .nav-links-left { margin-right: 10px; }
+    .nav-links-right { margin-left: 10px; }
+    .nav-links-left a,
+    .nav-links-right a { font-size: 0.55rem; letter-spacing: 0.1em; }
+
+    .hero-title { font-size: 3.2rem; }
+    .hero-and { font-size: 3.2rem; }
+    .hero-small-text { font-size: 0.75rem; }
+    .countdown-banner { gap: 15px; }
+    .countdown-banner-number { font-size: 2rem; }
+    .countdown-banner-sep { font-size: 1.4rem; }
+    .section-countdown-banner { padding: 40px 15px; }
+
+    .section-histoire { padding: 60px 0 30px; }
+    .histoire-header { padding: 0 20px 40px; }
+    .section-title { font-size: 2rem; margin-bottom: 40px; }
+    .histoire-block,
+    .histoire-block.reverse {
+        grid-template-columns: 1fr;
+        margin-bottom: 50px;
+    }
+    .histoire-image img { height: 350px; }
+    .histoire-text { padding: 35px 25px; }
+    .histoire-text h3 { font-size: 1.6rem; }
+
+    .info-gallery {
+        flex-direction: column;
+        height: auto;
+    }
+    .info-gallery-item {
+        flex: none;
+        height: 200px;
+        width: 100%;
+    }
+    .info-gallery-item:hover { flex: none; }
+
+    .section-informations { padding: 60px 15px; }
+
+    .hero-mini-names { font-size: 2.2rem; }
+    .footer-names { font-size: 2.5rem; }
+
+    .guest-card-header { flex-direction: column; }
+    .guest-card-actions { flex-wrap: wrap; }
+
     .splash-logo-container {
         width: 90vw;
         height: 90vh;

@@ -2,6 +2,14 @@
 const WEDDING_DATE = new Date('2027-09-04T14:00:00');
 const ADMIN_PASSWORD = 'alice&dimitri2027';
 
+// ========== NAVBAR SCROLL ==========
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    if (navbar) {
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
+    }
+});
+
 // ========== DATA STORE (localStorage) ==========
 function getGuests() {
     return JSON.parse(localStorage.getItem('wedding_guests') || '[]');
@@ -25,23 +33,11 @@ function showPage(pageId) {
     const page = document.getElementById(pageId);
     if (page) {
         page.classList.add('active');
+        // Re-trigger animation
         page.style.animation = 'none';
         page.offsetHeight; // force reflow
         page.style.animation = '';
     }
-}
-
-// ========== SIDEBAR SECTION SCROLL ==========
-function scrollToSection(id) {
-    showPage('page-welcome');
-    if (!id) {
-        document.getElementById('main-content').scrollTop = 0;
-        return;
-    }
-    setTimeout(() => {
-        const el = document.getElementById(id);
-        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 50);
 }
 
 // ========== RSVP FORM ==========
@@ -66,14 +62,18 @@ rsvpForm.addEventListener('submit', (e) => {
         createdAt: new Date().toISOString()
     };
 
+    // Save to guest list
     const guests = getGuests();
     guests.push(guest);
     saveGuests(guests);
 
+    // Save current guest reference
     setCurrentGuest({ id: guest.id, email: guest.email });
 
+    // Show pending page
     showPendingPage(guest);
 
+    // Reset form
     rsvpForm.reset();
 });
 
@@ -124,6 +124,7 @@ function startCountdown() {
         const minutes = diff <= 0 ? 0 : Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = diff <= 0 ? 0 : Math.floor((diff % (1000 * 60)) / 1000);
 
+        // Update countdown page
         const daysEl = document.getElementById('days');
         if (daysEl) daysEl.textContent = days;
         const hoursEl = document.getElementById('hours');
@@ -133,6 +134,7 @@ function startCountdown() {
         const secondsEl = document.getElementById('seconds');
         if (secondsEl) secondsEl.textContent = seconds.toString().padStart(2, '0');
 
+        // Update inline banner countdown
         const daysInline = document.getElementById('days-inline');
         if (daysInline) daysInline.textContent = days;
         const hoursInline = document.getElementById('hours-inline');
@@ -147,6 +149,7 @@ function startCountdown() {
     setInterval(update, 1000);
 }
 
+// Start countdown immediately on page load
 startCountdown();
 
 // ========== ADMIN ==========
@@ -196,28 +199,28 @@ function renderGuestList(filter) {
             accepted: 'Aucun invité accepté pour le moment',
             refused: 'Aucun invité refusé'
         };
-        container.innerHTML = `<div class="text-center py-10 text-[#A8907A] italic text-sm">${messages[filter]}</div>`;
+        container.innerHTML = `<div class="empty-list">${messages[filter]}</div>`;
         return;
     }
 
     container.innerHTML = filtered.map(guest => `
-        <div class="bg-white border border-[#EDE8E0] p-5 mb-3 hover:shadow-sm transition-shadow">
-            <div class="flex justify-between items-start mb-2">
+        <div class="guest-card">
+            <div class="guest-card-header">
                 <div>
-                    <div class="text-base font-semibold text-[#2C1D13] font-serif">${escapeHtml(guest.name)}</div>
-                    <div class="text-xs text-[#A8907A] italic">${escapeHtml(guest.email)}</div>
+                    <div class="guest-card-name">${escapeHtml(guest.name)}</div>
+                    <div class="guest-card-email">${escapeHtml(guest.email)}</div>
                 </div>
                 ${filter !== 'pending' ? `
-                    <span class="inline-block px-3 py-1 text-xs font-medium ${filter === 'accepted' ? 'bg-[#E8F0E4] text-[#5A7A4F]' : 'bg-[#F0E4E4] text-[#8B3E3E]'}">
+                    <span class="guest-card-status ${filter === 'accepted' ? 'status-accepted' : 'status-refused'}">
                         ${filter === 'accepted' ? 'Accepté' : 'Refusé'}
                     </span>
                 ` : ''}
             </div>
-            <div class="text-sm text-[#7A5C4F] mt-1">Inscrit(e) le ${new Date(guest.createdAt).toLocaleDateString('fr-FR')}</div>
+            <div class="guest-card-companion">Inscrit(e) le ${new Date(guest.createdAt).toLocaleDateString('fr-FR')}</div>
             ${filter === 'pending' ? `
-                <div class="mt-3 flex gap-2">
-                    <button class="px-4 py-2 bg-[#6B8F5E] text-white text-xs font-semibold tracking-wide uppercase hover:bg-[#5A7A4F] transition-colors" onclick="updateGuestStatus('${guest.id}', 'accepted')">Accepter</button>
-                    <button class="px-4 py-2 bg-[#A05050] text-white text-xs font-semibold tracking-wide uppercase hover:bg-[#8B3E3E] transition-colors" onclick="updateGuestStatus('${guest.id}', 'refused')">Refuser</button>
+                <div class="guest-card-actions">
+                    <button class="btn btn-accept" onclick="updateGuestStatus('${guest.id}', 'accepted')">Accepter</button>
+                    <button class="btn btn-refuse" onclick="updateGuestStatus('${guest.id}', 'refused')">Refuser</button>
                 </div>
             ` : ''}
         </div>
@@ -231,6 +234,7 @@ function updateGuestStatus(guestId, status) {
         guest.status = status;
         saveGuests(guests);
 
+        // Re-render current tab
         const activeTab = document.querySelector('.tab-btn.active').dataset.tab;
         renderGuestList(activeTab);
     }
@@ -255,6 +259,7 @@ document.getElementById('btn-back-countdown').addEventListener('click', () => {
         const guest = guests.find(g => g.id === current.id);
         if (guest) {
             guest.status = 'accepted';
+            // Guest themselves is still welcome
             showCountdownPage(guest);
             return;
         }
@@ -267,18 +272,21 @@ function initSplash() {
     const splash = document.getElementById('splash-screen');
     const logo = document.getElementById('splash-logo');
 
-    const duration = 5500;
+    const duration = 5500; // ms for drawing
     const startTime = performance.now();
 
     function animateDraw(now) {
         const elapsed = now - startTime;
         const progress = Math.min(elapsed / duration, 1);
 
+        // Eased progress (ease-in-out)
         const eased = progress < 0.5
             ? 2 * progress * progress
             : 1 - Math.pow(-2 * progress + 2, 2) / 2;
 
+        // Reveal percentage (0 to 100)
         const reveal = eased * 100;
+        // Soft brush edge width
         const edge = 12;
 
         const maskValue = `linear-gradient(to bottom, #000 0%, #000 ${reveal}%, transparent ${reveal + edge}%, transparent 100%)`;
@@ -288,6 +296,7 @@ function initSplash() {
         if (progress < 1) {
             requestAnimationFrame(animateDraw);
         } else {
+            // Drawing complete — hold then fade out
             setTimeout(() => {
                 splash.classList.add('fade-out');
                 setTimeout(() => {
